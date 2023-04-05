@@ -55,15 +55,22 @@
 }
 
 html,
-body {
+body, #__next {
   max-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 body {
-    background-color: var(--body-backgroud);
-    transition: var(--transition-default);
+  position: relative;
+  background-color: var(--body-backgroud);
+  transition: var(--transition-default);
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 a {

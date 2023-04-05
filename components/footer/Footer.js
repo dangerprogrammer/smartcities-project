@@ -1,5 +1,7 @@
+import styles from './Footer.module.scss';
+
 function Footer() {
-    return <h1>Footer</h1>
+    return <footer className={styles.footer}>Footer</footer>
 };
 
 export default Footer;

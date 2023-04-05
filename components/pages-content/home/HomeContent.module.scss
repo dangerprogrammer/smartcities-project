@@ -1,0 +1,15 @@
+.contentPage {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pageTitle {
+    font-size: 3em;
+    word-break: normal;
+}
+
+.homeImage {
+    flex-shrink: 0;
+}

@@ -1,5 +1,5 @@
 .navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     display: flex;
@@ -9,6 +9,8 @@
     border-bottom: 1px solid var(--border-color);
     transition-property: border;
     transition: var(--transition-default);
+    background-color: var(--body-backgroud);
+    z-index: 1000;
 }
 
 .navbar > * {
@@ -22,4 +24,5 @@
 .navlogo {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }

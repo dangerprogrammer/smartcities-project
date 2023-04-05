@@ -1,4 +1,4 @@
-// import Image from 'next/image';
+import Image from 'next/image';
 import styles from './Navbar.module.scss';
 import globalStyles from '../../styles/globals.module.scss';
 import MsgBox from '../msgbox/MsgBox';
@@ -20,7 +20,7 @@ function Navbar({title}) {
     return <nav className={styles.navbar}>
             <main className={globalStyles.contentSize}>
             <div className={styles.navlogo}>
-                {/* <Image alt="Logo Website"/> */}
+                <Image alt="Logo Website" src={"/imgs/bright-light-logo-branca.webp"} height={50} width={50}/>
                 <h1>{title}</h1>
             </div>
             <div>
