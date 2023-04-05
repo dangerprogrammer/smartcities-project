@@ -25,4 +25,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 1rem;
+}
+
+.homeImage {
+    flex-shrink: 0;
+    height: 3rem;
+    width: 3rem;
 }

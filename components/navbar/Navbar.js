@@ -20,7 +20,7 @@ function Navbar({title}) {
     return <nav className={styles.navbar}>
             <main className={globalStyles.contentSize}>
             <div className={styles.navlogo}>
-                <Image alt="Logo Website" src={"/imgs/bright-light-logo-branca.webp"} height={50} width={50}/>
+                <div className={`${styles.homeImage} logo-website`}></div>
                 <h1>{title}</h1>
             </div>
             <div>
