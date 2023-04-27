@@ -9,8 +9,18 @@
     border-bottom: 1px solid var(--border-color);
     transition-property: border;
     transition: var(--transition-default);
-    background-color: var(--body-backgroud);
+    backdrop-filter: blur(.5rem);
     z-index: 1000;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-color: var(--body-backgroud);
+        opacity: .8;
+        pointer-events: none;
+    }
 }
 
 .navbar > * {

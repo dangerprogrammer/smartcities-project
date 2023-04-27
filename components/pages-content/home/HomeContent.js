@@ -1,7 +1,8 @@
 import PageContainer from '@/components/pagecontainer/PageContainer';
 import styles from './HomeContent.module.scss';
-import globalStyles from '../../../styles/globals.module.scss';
+import globalStyles from '@/styles/globals.module.scss';
 import Image from 'next/image';
+import {randomInt, between} from '@/scripts/global-scripts';
 
 function HomeContent() {
   setTimeout(animateItemsLoader, 1);
@@ -41,11 +42,13 @@ function animateItemsLoader() {
   function generatePolygons(count = 12) {
     polygons.splice(0, polygons.length);
 
-    for (let c = 0; c < Math.min(Math.max(count, 50), 5); c++) buildPolygon();
+    for (let c = 0; c < between(5, count, 50); c++) buildPolygon();
   };
 
   function buildPolygon() {
     const polygonSize = randomInt(30, 60);
+
+    polygons.push({polygonSize});
   };
 };
 
