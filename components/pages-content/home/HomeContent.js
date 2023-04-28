@@ -101,7 +101,7 @@ function animateItemsLoader() {
     props.x ??= randomInt(props.size, w - props.size);
     props.y ??= randomInt(props.size, h - props.size);
     props.color ??= '#25f';
-    props.speedY = (props.size ** -1) * -3e1;
+    props.speedY = props.size ** -1 * -3e1;
 
     const {size, x, y, color, speedY} = props;
 
