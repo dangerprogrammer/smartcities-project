@@ -4,6 +4,8 @@ import globalStyles from '../../styles/globals.module.scss';
 import MsgBox from '../msgbox/MsgBox';
 
 function Navbar({title}) {
+    setTimeout(loadScroll, 1);
+
     const optionsTheme = [
         {
             Content: ({...args}) => <span {...args}>Padrão</span>, id: "default",
@@ -28,6 +30,14 @@ function Navbar({title}) {
             </div>
         </main>
     </nav>
+};
+
+function loadScroll() {
+    const navbar = document.querySelector(`[class*="${styles.navbar}"]`);
+
+    document.addEventListener("scroll", () => {
+        navbar.classList.toggle(styles.scrolledNavbar, window.scrollY);
+    });
 };
 
 const themeActions = {

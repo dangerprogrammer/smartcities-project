@@ -3,6 +3,7 @@ import styles from './HomeContent.module.scss';
 import globalStyles from '@/styles/globals.module.scss';
 import Image from 'next/image';
 import {randomInt, random, between} from '@/scripts/global-scripts';
+import BackgroundContent from '@/components/background-content/backgroundContent';
 
 function HomeContent() {
   setTimeout(animateItemsLoader, 1);
@@ -13,7 +14,9 @@ function HomeContent() {
       <div>
         <h1 className={styles.pageTitle}>Um projeto sobre cidades inteligentes!</h1>
       </div>
+      <BackgroundContent className={styles.homeBackground}/>
       <canvas className={styles.canvasElement} id="home-background"></canvas>
+      
     </main>
   </PageContainer>
 };

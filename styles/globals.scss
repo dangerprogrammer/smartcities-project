@@ -60,6 +60,10 @@
   font-family: Poppins;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 html,
 body, #__next {
   max-width: 100vw;
