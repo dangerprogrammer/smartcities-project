@@ -1,0 +1,25 @@
+.footer {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-top: 1px solid var(--border-color);
+  -webkit-transition-property: border;
+  transition-property: border;
+  -webkit-transition: var(--transition-default);
+  transition: var(--transition-default);
+}
+/*# sourceMappingURL=Footer.module.css.map */
