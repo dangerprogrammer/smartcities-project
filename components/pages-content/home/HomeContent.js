@@ -65,6 +65,14 @@ function animateItemsLoader() {
             canvas2d.restore();
         });
     */
+    canvas2d.lineWidth = 8;
+    polygons.forEach(({size, x, y, color}, ind) => {
+      canvas2d.save();
+
+      canvas2d.closePath();
+      canvas2d.stroke();
+      canvas2d.restore();
+    });
   };
 
   function generatePolygons(count = 12) {
