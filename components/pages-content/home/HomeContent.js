@@ -78,7 +78,7 @@ function animateItemsLoader() {
   function buildPolygon(props = {}) {
     const h = canvas.height, w = canvas.width;
 
-    props.size ??= randomInt(30, 60);
+    props.size ??= random(30, 60);
     props.x ??= randomInt(props.size, w - props.size);
     props.y ??= randomInt(props.size, h - props.size);
     props.color ??= '#25f';
