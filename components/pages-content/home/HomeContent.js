@@ -27,7 +27,7 @@ function animateItemsLoader() {
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    hasRender ? updatePolygonPos() : generatePolygons(20);
+    hasRender ? updatePolygon() : generatePolygons(20);
 
     requestAnimationFrame(updateCanvas);
     hasRender = !0;
@@ -35,7 +35,7 @@ function animateItemsLoader() {
 
   requestAnimationFrame(updateCanvas);
 
-  function updatePolygonPos() {
+  function updatePolygon() {
 
   };
 
@@ -46,9 +46,10 @@ function animateItemsLoader() {
   };
 
   function buildPolygon() {
-    const polygonSize = randomInt(30, 60);
+    const h = canvas.height, w = canvas.width, size = randomInt(30, 60),
+    x = randomInt(size, w - size), y = randomInt(size, h - size), color = '#50f';
 
-    polygons.push({polygonSize});
+    polygons.push({size, x, y, color});
   };
 };
 
