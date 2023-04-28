@@ -24,7 +24,6 @@
 }
 
 .homeBackground {
-
     &::before {
         content: '';
         position: absolute;
@@ -35,4 +34,21 @@
         filter: blur(15rem);
         border-radius: 50%;
     }
+}
+
+*:has(> .waveBackground) {
+    position: absolute;
+    inset: 0;
+    // background: #f004;
+    display: flex;
+}
+
+.waveBackground {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 100vh;
+    max-width: 100vw;
+    pointer-events: none;
 }
