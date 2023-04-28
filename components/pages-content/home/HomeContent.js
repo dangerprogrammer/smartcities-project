@@ -35,6 +35,25 @@ function animateItemsLoader() {
 
   requestAnimationFrame(updateCanvas);
 
+  const moveSpeed = 4e-2;
+  let lastX, lastY;
+
+  document.addEventListener("mousemove", movePolygonMouse);
+
+  function movePolygonMouse({clientX, clientY}) {
+    if (lastX !== undefined && lastY !== undefined) {
+      if (lastX != clientX || lastY != clientY) {
+        polygons.forEach(polygon => {
+          polygon.x  += Math.min(clientX - lastX, 20) * moveSpeed;
+          polygon.y  += Math.min(clientY - lastY, 20) * (moveSpeed / 2);
+        });
+      };
+    };
+
+    lastX = clientX;
+    lastY = clientY;
+  };
+
   function updatePolygons() {
     canvas2d.lineWidth = 6;
     canvas2d.globalAlpha = .5;
@@ -64,7 +83,7 @@ function animateItemsLoader() {
       if (y < 0 - size) {
         delete polygons[ind];
 
-        buildPolygon({y: canvas.height + size});
+        buildPolygon({y: canvas.height + 60});
       };
     });
   };
