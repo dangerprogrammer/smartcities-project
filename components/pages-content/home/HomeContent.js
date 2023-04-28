@@ -55,8 +55,8 @@ function animateItemsLoader() {
   };
 
   function updatePolygons() {
-    canvas2d.lineWidth = 6;
-    canvas2d.globalAlpha = .5;
+    canvas2d.lineWidth = 3;
+    canvas2d.globalAlpha = .4;
 
     polygons.forEach(({size, x, y, color, speedY}, ind) => {
       canvas2d.save();
