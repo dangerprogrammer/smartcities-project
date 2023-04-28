@@ -27,7 +27,7 @@ function animateItemsLoader() {
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    hasRender ? updatePolygon() : generatePolygons(20);
+    hasRender ? updatePolygons() : generatePolygons(20);
 
     requestAnimationFrame(updateCanvas);
     hasRender = !0;
@@ -35,8 +35,36 @@ function animateItemsLoader() {
 
   requestAnimationFrame(updateCanvas);
 
-  function updatePolygon() {
+  function updatePolygons() {
+    /*
+        canvas2d.lineWidth = 8;
+        canvas2d.globalAlpha = window.theme === 'dark' ? 1 : .5;
+        polygons.forEach(({xCenter, yCenter, numberSides, polygonSize, fullyColor, randomBW, randomBH, rotationSpeed, rotate, rotationDir}, ind) => {
+            canvas2d.save();
+            polygons[ind].rotate = rotate + rotationSpeed || rotationSpeed;
+            rotate = polygons[ind].rotate;
+            xCenter = xCenter > 30 ? (80/100*bW) + randomBW * (15/100*bW) : (5/100*bW) + randomBW * (20/100*bW);xCenter = Math.min(bW - polygonSize, Math.max(polygonSize, xCenter));
+            yCenter = yCenter > 18 ? (80/100*bH) + randomBH * (15/100*bH) : (5/100*bH) + randomBH * (20/100*bH);yCenter = Math.min(bH - polygonSize, Math.max(polygonSize, yCenter));
 
+            canvas2d.beginPath();
+            canvas2d.moveTo(
+                xCenter + polygonSize * Math.cos(2 * Math.PI * (0 + rotate * rotationDir)),
+                yCenter + polygonSize * Math.sin(2 * Math.PI * (0 + rotate * rotationDir))
+            );
+    
+            canvas2d.strokeStyle = fullyColor;
+    
+            for (let c = 1; c <= numberSides; c++) canvas2d.lineTo(
+                xCenter + polygonSize * Math.cos(2 * Math.PI * (c / numberSides + rotate * rotationDir)),
+                yCenter + polygonSize * Math.sin(2 * Math.PI * (c / numberSides + rotate * rotationDir))
+            );
+    
+    
+            canvas2d.closePath();
+            canvas2d.stroke();
+            canvas2d.restore();
+        });
+    */
   };
 
   function generatePolygons(count = 12) {
