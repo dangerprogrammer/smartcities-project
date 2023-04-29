@@ -7,8 +7,8 @@
     justify-content: center;
     user-select: none;
     border-bottom: 1px solid transparent;
-    translate: 0 1rem;
-    transition-property: border, translate;
+    padding: 1rem 0;
+    transition-property: border, padding;
     transition: var(--transition-default);
     z-index: 1000;
 
@@ -24,7 +24,7 @@
 }
 
 .scrolledNavbar {
-    translate: 0;
+    padding: 0;
     border-bottom-color: var(--border-color);
     backdrop-filter: blur(.5rem);
 
