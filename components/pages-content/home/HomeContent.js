@@ -7,7 +7,6 @@ import BackgroundContent from '@/components/background-content/BackgroundContent
 import Wave from '@/assets/svgs/wave-haikei.svg';
 
 function HomeContent() {
-  console.log(Wave);
   setTimeout(animateItemsLoader, 1);
 
   return <PageContainer id="home-page">
@@ -29,8 +28,6 @@ function HomeContent() {
 function animateItemsLoader() {
   const canvas = document.querySelector('#home-background'), wave = document.querySelector('#wave'), canvas2d = canvas.getContext('2d'), polygons = [];
 
-  console.log(wave.viewBox);
-
   let hasRender = !1;
 
   function updateCanvas() {
@@ -45,7 +42,7 @@ function animateItemsLoader() {
 
   requestAnimationFrame(updateCanvas);
 
-  const moveSpeed = 4e-2;
+  const moveSpeed = 1;
   let lastX, lastY;
 
   document.addEventListener("mousemove", movePolygonMouse);
@@ -53,9 +50,9 @@ function animateItemsLoader() {
   function movePolygonMouse({clientX, clientY}) {
     if (lastX !== undefined && lastY !== undefined) {
       if (lastX != clientX || lastY != clientY) {
-        polygons.forEach(polygon => {
-          polygon.x  += Math.min(clientX - lastX, 20) * moveSpeed;
-          polygon.y  += Math.min(clientY - lastY, 20) * (moveSpeed / 2);
+        polygons.forEach((polygon) => {
+          polygon.x  += between(-20, clientX - lastX, 20) * (moveSpeed / polygon.size * 2);
+          polygon.y  += between(-20, clientY - lastY, 20) * (moveSpeed / polygon.size);
         });
       };
     };
