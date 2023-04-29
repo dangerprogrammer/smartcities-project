@@ -1,11 +1,19 @@
-import PageContainer from '@/components/pagecontainer/PageContainer';
+import PageContainer from '@/components/page-container/PageContainer';
 import styles from './HomeContent.module.scss';
 import globalStyles from '@/styles/globals.module.scss';
 import {randomInt, random, between} from '@/scripts/global-scripts';
 import BackgroundContent from '@/components/background-content/BackgroundContent';
-import PageContent from '@/components/pagecontent/PageContent';
+import PageContent from '@/components/page-content/PageContent';
+import ListImages from '@/components/list-images/ListImages';
 
 function HomeContent() {
+  const listMembers = [
+    {src: "/imgs/patrick.jpg", name: "Patrick Léo"},
+    {src: "/imgs/renato.jpg", name: "Renato Rinaldi"},
+    {src: "/imgs/luis.jpg", name: "Luis"},
+    {src: "/imgs/viktor.jpg", name: "Viktor"}
+  ];
+
   setTimeout(animateItemsLoader, 1);
 
   return <PageContainer id="home-page">
@@ -26,7 +34,8 @@ function HomeContent() {
         </svg>
       </div>
     }>
-      <header>Opa!</header>
+      <h1 className={styles.titleMembers}>Aqui estão alguns colaboradores do projeto!</h1>
+      <ListImages dataList={listMembers} borderColor="white"/>
     </PageContent>
   </PageContainer>
 };

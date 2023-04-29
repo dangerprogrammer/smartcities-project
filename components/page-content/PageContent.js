@@ -1,9 +1,9 @@
 import styles from './PageContent.module.scss';
 import globalStyles from '@/styles/globals.module.scss';
 
-function PageContent({children, outsideSize, ...argsContainer}) {
+function PageContent({children, outsideSize, className, ...argsContainer}) {
     return <main className={styles.pageContent}>
-        <div className={globalStyles.contentSize} {...argsContainer}>
+        <div className={`${globalStyles.contentSize} ${className}`} {...argsContainer}>
             {children}
         </div>
         {outsideSize}
