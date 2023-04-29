@@ -16,24 +16,31 @@ function HomeContent() {
       </div>
       <BackgroundContent className={styles.homeBackground}/>
       <canvas className={styles.canvasElement} id="home-background"></canvas>
-      <div>
-        <svg  id="wave" className={styles.waveBackground} viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1"><path d="M0 999L45.7 1002.2C91.3 1005.3 182.7 1011.7 274.2 1004.2C365.7 996.7 457.3 975.3 548.8 965.8C640.3 956.3 731.7 958.7 823 966.2C914.3 973.7 1005.7 986.3 1097 993C1188.3 999.7 1279.7 1000.3 1371.2 992.8C1462.7 985.3 1554.3 969.7 1645.8 970.5C1737.3 971.3 1828.7 988.7 1874.3 997.3L1920 1006L1920 1081L1874.3 1081C1828.7 1081 1737.3 1081 1645.8 1081C1554.3 1081 1462.7 1081 1371.2 1081C1279.7 1081 1188.3 1081 1097 1081C1005.7 1081 914.3 1081 823 1081C731.7 1081 640.3 1081 548.8 1081C457.3 1081 365.7 1081 274.2 1081C182.7 1081 91.3 1081 45.7 1081L0 1081Z" fill="#25f" strokeLinecap="round" strokeLinejoin="miter"></path></svg>
-      </div>
     </PageContent>
-    <PageContent className={styles.groupCollaborators}>
+    <PageContent className={styles.groupCollaborators} outsideSize={
+      <div>
+        <svg  id="wave" className={styles.waveBackground} viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1">
+          <path d="M0 1007L45.7 1006.7C91.3 1006.3 182.7 1005.7 274.2 1011.3C365.7 1017 457.3 1029 548.8 1035.7C640.3 1042.3 731.7 1043.7 823 1042.2C914.3 1040.7 1005.7 1036.3 1097 1029.2C1188.3 1022 1279.7 1012 1371.2 1009.8C1462.7 1007.7 1554.3 1013.3 1645.8 1021.3C1737.3 1029.3 1828.7 1039.7 1874.3 1044.8L1920 1050L1920 1081L1874.3 1081C1828.7 1081 1737.3 1081 1645.8 1081C1554.3 1081 1462.7 1081 1371.2 1081C1279.7 1081 1188.3 1081 1097 1081C1005.7 1081 914.3 1081 823 1081C731.7 1081 640.3 1081 548.8 1081C457.3 1081 365.7 1081 274.2 1081C182.7 1081 91.3 1081 45.7 1081L0 1081Z" fill="#25f" strokeLinecap="round" strokeLinejoin="miter"></path>
+          <path d="M0 1000L45.7 1002.7C91.3 1005.3 182.7 1010.7 274.2 998C365.7 985.3 457.3 954.7 548.8 949C640.3 943.3 731.7 962.7 823 966.7C914.3 970.7 1005.7 959.3 1097 963.8C1188.3 968.3 1279.7 988.7 1371.2 991.2C1462.7 993.7 1554.3 978.3 1645.8 977.8C1737.3 977.3 1828.7 991.7 1874.3 998.8L1920 1006L1920 1081L1874.3 1081C1828.7 1081 1737.3 1081 1645.8 1081C1554.3 1081 1462.7 1081 1371.2 1081C1279.7 1081 1188.3 1081 1097 1081C1005.7 1081 914.3 1081 823 1081C731.7 1081 640.3 1081 548.8 1081C457.3 1081 365.7 1081 274.2 1081C182.7 1081 91.3 1081 45.7 1081L0 1081Z" fill="#25f5" strokeLinecap="round" strokeLinejoin="miter"></path>
+          <path d="M0 1044L40 1042.2C80 1040.3 160 1036.7 240 1037C320 1037.3 400 1041.7 480 1035.7C560 1029.7 640 1013.3 720 1005.3C800 997.3 880 997.7 960 1003.5C1040 1009.3 1120 1020.7 1200 1029C1280 1037.3 1360 1042.7 1440 1038.5C1520 1034.3 1600 1020.7 1680 1012.3C1760 1004 1840 1001 1880 999.5L1920 998L1920 1081L1880 1081C1840 1081 1760 1081 1680 1081C1600 1081 1520 1081 1440 1081C1360 1081 1280 1081 1200 1081C1120 1081 1040 1081 960 1081C880 1081 800 1081 720 1081C640 1081 560 1081 480 1081C400 1081 320 1081 240 1081C160 1081 80 1081 40 1081L0 1081Z" fill="#25f8" strokeLinecap="round" strokeLinejoin="miter"></path>
+        </svg>
+      </div>
+    }>
       <header>Opa!</header>
     </PageContent>
   </PageContainer>
 };
 
 function animateItemsLoader() {
-  const canvas = document.querySelector('#home-background'), wave = document.querySelector('#wave'), canvas2d = canvas.getContext('2d'), polygons = [];
+  const canvas = document.querySelector('#home-background'), wave = document.querySelector('#wave'), waveChilds = [...document.querySelectorAll('#wave > *')], canvas2d = canvas.getContext('2d'), polygons = [];
 
   let hasRender = !1;
 
   function updateCanvas() {
-    wave.viewBox.baseVal.height = canvas.height = window.innerHeight;
-    wave.viewBox.baseVal.width = canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    wave.style.height = window.innerWidth / (1920 / 1080);
+    // waveChilds.forEach(waveChild => waveChild.style.scale = `${window.innerWidth / 1715} 1`);
 
     hasRender ? updatePolygons() : generatePolygons(20);
 
