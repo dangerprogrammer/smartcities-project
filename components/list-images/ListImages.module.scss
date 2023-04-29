@@ -45,14 +45,18 @@
         z-index: 1000;
 
         .imageDesc {
+            pointer-events: auto;
+            opacity: 1;
             translate: 0 calc(var(--size) + 100% + .5rem);
         }
     }
 }
 
 .imageDesc {
+    pointer-events: none;
     top: 0;
     position: absolute;
+    opacity: 0;
     transition: .15s ease-in-out;
     transition-property: translate, opacity;
     z-index: -1;

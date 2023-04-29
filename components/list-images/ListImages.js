@@ -7,7 +7,7 @@ function ListImages({dataList, className, circleSize = "10rem", borderColor = "r
             <span>
                 <img alt={name} src={src}/>
             </span>
-            <div className={styles.imageDesc}>MSG</div>
+            <div className={styles.imageDesc}>{name}</div>
         </li>)}
     </ul>
 };
