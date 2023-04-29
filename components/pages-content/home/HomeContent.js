@@ -32,15 +32,13 @@ function HomeContent() {
 };
 
 function animateItemsLoader() {
-  const canvas = document.querySelector('#home-background'), wave = document.querySelector('#wave'), waveChilds = [...document.querySelectorAll('#wave > *')], canvas2d = canvas.getContext('2d'), polygons = [];
+  const canvas = document.querySelector('#home-background'), canvas2d = canvas.getContext('2d'), polygons = [];
 
   let hasRender = !1;
 
   function updateCanvas() {
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
-    wave.style.height = window.innerWidth / (1920 / 1080);
-    // waveChilds.forEach(waveChild => waveChild.style.scale = `${window.innerWidth / 1715} 1`);
 
     hasRender ? updatePolygons() : generatePolygons(20);
 
