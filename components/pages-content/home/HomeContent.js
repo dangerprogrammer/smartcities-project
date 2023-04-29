@@ -10,7 +10,7 @@ function HomeContent() {
   const listMembers = [
     {src: "/imgs/patrick.jpg", name: "Patrick Léo"},
     {src: "/imgs/renato.jpg", name: "Renato Rinaldi"},
-    {src: "/imgs/luis.jpg", name: "Luis"},
+    {src: "/imgs/luis.jpg", name: "Luis Henrique"},
     {src: "/imgs/viktor.jpg", name: "Viktor"}
   ];
 
