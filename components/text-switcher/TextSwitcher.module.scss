@@ -3,6 +3,14 @@
 
     div {
         position: absolute;
+
+        &::before {
+            content: "";
+            position: relative;
+            height: 1em;
+            width: .2rem;
+            background: #58f;
+        }
     }
 }
 
