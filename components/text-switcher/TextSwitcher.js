@@ -36,7 +36,7 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
     if (startWord !== undefined) {
         firstLoad = !1;
 
-        const findedWords = switchedText[startWord] || switchedText[0];
+        const findedWords = switchedText.filter((text, ind) => ind >= startWord);
 
         if (!findedWords.length) return;
 
@@ -51,6 +51,7 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
             startDelay += (typeSpeed / 2) * (findedWords[ind - 1] ? findedWords[ind - 1].length : 0) + wordDuration;
 
             setTimeout(() => {
+                console.log(`writing finded word ${text}`);
                 const textStr = [...findedWord.split('')];
                 textStr.forEach((str, indStr) => {
                     setTimeout(() => div.innerText = findedWord.slice(0, indStr + 1), typeSpeed * findedWord.length);
