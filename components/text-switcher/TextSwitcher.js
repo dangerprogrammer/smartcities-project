@@ -33,27 +33,37 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
     switchedText.forEach((text, ind) => intervalTime += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration);
 
-    console.log(intervalTime);
-
     if (startWord !== undefined) {
         firstLoad = !1;
 
-        const findedWord = switchedText[startWord] || switchedText[0];
+        const findedWords = switchedText[startWord] || switchedText[0];
 
-        if (!findedWord) return;
+        if (!findedWords.length) return;
 
-        div.innerText = findedWord;
+        div.innerText = findedWords[0];
 
-        startDelay += (typeSpeed / 2) * findedWord.length + wordDuration;
-
-        const textStr = [...findedWord.split('')];
+        const textStr = [...findedWords[0].split('')];
         textStr.forEach((str, indStr) => {
-            setTimeout(() => div.innerText = findedWord.slice(0, findedWord.length - (indStr + 1)), typeSpeed * findedWord.length + wordDuration + (typeSpeed / 2) * indStr);
+            setTimeout(() => div.innerText = findedWords[0].slice(0, findedWords[0].length - (indStr + 1)), typeSpeed * findedWords[0].length + wordDuration + (typeSpeed / 2) * indStr);
+        });
+
+        findedWords.forEach((findedWord, ind) => {
+            startDelay += (typeSpeed / 2) * (findedWords[ind - 1] ? findedWords[ind - 1].length : 0) + wordDuration;
+
+            setTimeout(() => {
+                const textStr = [...findedWord.split('')];
+                textStr.forEach((str, indStr) => {
+                    setTimeout(() => div.innerText = findedWord.slice(0, indStr + 1), typeSpeed * findedWord.length);
+                    setTimeout(() => div.innerText = findedWord.slice(0, findedWord.length - (indStr + 1)), typeSpeed * findedWord.length + wordDuration + (typeSpeed / 2) * indStr);
+                });
+            }, startDelay);
         });
     };
 
     let switchInterval;
     setTimeout(() => {
+        if (startDelay) firstLoad = !1;
+
         loadEachWord();
 
         switchInterval = setInterval(() => {
@@ -64,7 +74,7 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
         firstLoad = !1;
 
         loadEachWord();
-        }, intervalTime + wordDuration);
+        }, intervalTime);
     }, startDelay);
 
     function loadEachWord() {
@@ -73,9 +83,10 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
         switchedText.forEach((text, ind) => {
             fullTimeout += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration;
 
-            if (startWord !== undefined && firstLoad && ind <= startWord) return;
+            if (startWord !== undefined && firstLoad && ind <= startWord) return console.log("stop! first load");
 
             setTimeout(() => {
+                console.log(`writing word ${text}`);
                 const textStr = [...text.split('')];
                 textStr.forEach((str, indStr) => {
                     setTimeout(() => div.innerText = text.slice(0, indStr + 1), typeSpeed * indStr);
