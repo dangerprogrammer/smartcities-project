@@ -66,7 +66,7 @@
     letter-spacing: .05rem;
     white-space: nowrap;
     background: #58f;
-    padding: 0 1rem;
+    padding: .1rem 1rem .15rem 1rem;
     border-radius: 1rem;
     transition: .2s ease-in-out;
     transition-property: translate, opacity, scale;
@@ -88,13 +88,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    gap: .5rem;
     width: 100%;
 
-    img {
-        position: relative;
-        object-fit: contain;
-        translate: -.5rem;
-        height: 1.5rem;
+    ion-icon {
+        font-size: 1.35em;
     }
 }

@@ -12,8 +12,8 @@ function ListImages({dataList, className, circleSize = "10rem", borderColor = "r
                 <span>{name}</span>
                 {aditionalLinks && <>
                     <hr/>
-                    {aditionalLinks.map(({img, src, name}, ind) => <Link className={styles.aditionalLink} key={ind} href={src} target="_blank">
-                        <img alt={`${name} logo`} src={img}/>
+                    {aditionalLinks.map(({src, name, Img}, ind) => <Link className={styles.aditionalLink} key={ind} href={src} target="_blank">
+                        <Img />
                         <span>{name}</span>
                     </Link>)}
                 </>}

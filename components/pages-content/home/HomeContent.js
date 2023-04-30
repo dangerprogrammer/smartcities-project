@@ -9,7 +9,9 @@ import ListImages from '@/components/list-images/ListImages';
 function HomeContent() {
   const listMembers = [
     {src: "/imgs/patrick.jpg", name: "Patrick Léo", aditionalLinks: [
-      {img: "/imgs/github-icon.png", src: "https://github.com/dangerprogrammer", name: "GitHub"}
+      {Img() {
+      return <ion-icon name="logo-github"></ion-icon>
+    }, src: "https://github.com/dangerprogrammer", name: "GitHub"}
     ]},
     {src: "/imgs/renato.jpg", name: "Renato Rinaldi"},
     {src: "/imgs/luis.jpg", name: "Luis Henrique"},
