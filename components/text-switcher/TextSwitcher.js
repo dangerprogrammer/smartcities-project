@@ -33,16 +33,16 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
     if (startWord !== undefined) {
         firstLoad = !0;
-        div.innerText = switchedText[startWord] || "";
-        
-        const findedWord = switchedText.find((text, ind) => ind === startWord);
+
+        const findedWord = switchedText[startWord] || switchedText[0];
 
         if (!findedWord) return;
 
-        startDelay += typeSpeed * findedWord.length + wordDuration + (typeSpeed / 2) * findedWord.length;
+        div.innerText = findedWord || "";
+
+        startDelay += (typeSpeed / 2) * findedWord.length + wordDuration;
 
         const textStr = [...findedWord.split('')];
-        console.log(`writing word "${findedWord}"`);
         textStr.forEach((str, indStr) => {
             setTimeout(() => div.innerText = findedWord.slice(0, findedWord.length - (indStr + 1)), typeSpeed * findedWord.length + wordDuration + (typeSpeed / 2) * indStr);
         });

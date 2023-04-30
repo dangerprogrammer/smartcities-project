@@ -9,13 +9,13 @@ function Navbar({title}) {
     const optionsTheme = [
         {
             Content: ({...args}) => <span {...args}>Padrão</span>, id: "default",
-            Icon: ({...args}) => <ion-icon name="desktop-outline" {...args}></ion-icon>
+            Icon: () => <ion-icon name="desktop-outline"></ion-icon>
         }, {
             Content: ({...args}) => <span {...args}>Claro</span>, id: "light",
-            Icon: ({...args}) => <ion-icon name="sunny-outline" {...args}></ion-icon>
+            Icon: () => <ion-icon name="sunny-outline"></ion-icon>
         }, {
             Content: ({...args}) => <span {...args}>Escuro</span>, id: "dark",
-            Icon: ({...args}) => <ion-icon name="moon-outline" {...args}></ion-icon>
+            Icon: () => <ion-icon name="moon-outline"></ion-icon>
         }
     ];
 
