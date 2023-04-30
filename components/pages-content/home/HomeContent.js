@@ -8,10 +8,12 @@ import ListImages from '@/components/list-images/ListImages';
 
 function HomeContent() {
   const listMembers = [
-    {src: "/imgs/patrick.jpg", name: "Patrick Léo"},
+    {src: "/imgs/patrick.jpg", name: "Patrick Léo", aditionalLinks: [
+      {img: "/imgs/github-icon.png", src: "https://github.com/dangerprogrammer", name: "GitHub"}
+    ]},
     {src: "/imgs/renato.jpg", name: "Renato Rinaldi"},
     {src: "/imgs/luis.jpg", name: "Luis Henrique"},
-    {src: "/imgs/viktor.jpg", name: "Viktor"}
+    {src: "/imgs/viktor.jpg", name: "Viktor Nachiluk Roza"}
   ];
 
   setTimeout(animateItemsLoader, 1);

@@ -15,13 +15,13 @@
     list-style: none;
     border-radius: 50%;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     z-index: var(--ind);
     padding: calc(var(--size) / 15);
     transition-property: opacity;
 
-    span {
+    .imageContent {
         position: relative;
         display: block;
         height: var(--size);
@@ -48,7 +48,8 @@
         .imageDesc {
             pointer-events: auto;
             opacity: 1;
-            translate: 0 calc(100% + 1rem);
+            scale: 1;
+            translate: 0 calc(var(--size) / -2 - 100% - 1rem);
         }
     }
 }
@@ -57,7 +58,43 @@
     pointer-events: none;
     position: absolute;
     opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    scale: .5;
+    font-weight: 800;
+    letter-spacing: .05rem;
+    white-space: nowrap;
+    background: #58f;
+    padding: 0 1rem;
+    border-radius: 1rem;
     transition: .2s ease-in-out;
-    transition-property: translate, opacity;
+    transition-property: translate, opacity, scale;
     z-index: -1;
+    cursor: default;
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: var(--size);
+        width: 100%;
+        left: 50%;
+        translate: -50%;
+        z-index: -1;
+    }
+}
+
+.aditionalLink {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    img {
+        position: relative;
+        object-fit: contain;
+        translate: -.5rem;
+        height: 1.5rem;
+    }
 }
