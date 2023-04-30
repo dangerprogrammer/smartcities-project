@@ -9,17 +9,25 @@ function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 2e3}) {
         if (!biggestWord || !parentWord) return;
         else clearInterval(loadWordInt);
 
-        parentWord.innerText = biggestWord.innerText;
+        loadSwitcher(parentWord, biggestWord);
     }, 1e2);
 
     return <>
     <span>
+        <aside></aside>
+        <div></div>
         {switchedText.map((text, ind) => <li key={ind} id={`shadow-${ind}`} className={styles.shadowWord}>{text}</li>)}
     </span>
     </>;
 };
 
-function setWords({switchedText, typeSpeed, wordDuration}) {
+function loadSwitcher(parentWord, biggestWord) {
+    const aside = parentWord.children[0];
+
+    aside.innerText = biggestWord.innerText;
+};
+
+function setWords() {
     const words = [...document.querySelectorAll(`li[id*="shadow-"]`)];
     let biggestWord = words[0];
 
