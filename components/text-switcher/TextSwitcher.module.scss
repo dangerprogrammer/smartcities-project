@@ -1,0 +1,8 @@
+*:has(> .shadowWord) {
+    position: relative;
+}
+
+.shadowWord {
+    list-style: none;
+    position: absolute;
+}

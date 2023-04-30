@@ -1,10 +1,10 @@
 import PageContainer from '@/components/page-container/PageContainer';
 import styles from './HomeContent.module.scss';
-import globalStyles from '@/styles/globals.module.scss';
 import {randomInt, random, between} from '@/scripts/global-scripts';
 import BackgroundContent from '@/components/background-content/BackgroundContent';
 import PageContent from '@/components/page-content/PageContent';
 import ListImages from '@/components/list-images/ListImages';
+import TextSwitcher from '@/components/text-switcher/TextSwitcher';
 
 function HomeContent() {
   const listMembers = [
@@ -16,18 +16,19 @@ function HomeContent() {
     {src: "/imgs/renato.jpg", name: "Renato Rinaldi"},
     {src: "/imgs/luis.jpg", name: "Luis Henrique"},
     {src: "/imgs/viktor.jpg", name: "Viktor Nachiluk Roza"}
-  ];
+  ], switchedText = ['inteligentes', 'humanas', 'sustentáveis'];
 
   setTimeout(animateItemsLoader, 1);
 
   return <PageContainer id="home-page">
-    <PageContent className={styles.contentPage}>
-      <div className={`${styles.homeImage} logo-website`}></div>
+    <PageContent className={styles.contentPage} outsideSize={<canvas className={styles.canvasElement} id="home-background"></canvas>}>
+      {/* <div className={`${styles.homeImage} logo-website`}></div> */}
       <div>
-        <h1 className={styles.pageTitle}>Um projeto sobre cidades inteligentes!</h1>
+        <h1 className={styles.pageTitle}>Um projeto sobre
+        <br/>
+        cidades <br/><TextSwitcher switchedText={switchedText}/></h1>
       </div>
       <BackgroundContent className={styles.homeBackground}/>
-      <canvas className={styles.canvasElement} id="home-background"></canvas>
     </PageContent>
     <PageContent className={styles.groupCollaborators} outsideSize={<>
       <div>
@@ -57,7 +58,7 @@ function animateItemsLoader() {
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    hasRender ? updatePolygons() : generatePolygons(20);
+    hasRender ? updatePolygons() : generatePolygons(25);
 
     requestAnimationFrame(updateCanvas);
     hasRender = !0;
