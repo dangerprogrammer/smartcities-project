@@ -1,6 +1,6 @@
 import styles from './TextSwitcher.module.scss';
 
-function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 2e3}) {
+function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 2e3, infiniteSwitch}) {
     let biggestWord;
     let loadSystem = setInterval(() => {
         let word0 = document.querySelector('li[id*="shadow-"]');
@@ -11,7 +11,7 @@ function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 2e3}) {
 
         const parentWord = biggestWord.parentElement;
 
-        loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDuration);
+        loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDuration, infiniteSwitch);
     }, 1e2);
 
     return <>
@@ -23,23 +23,29 @@ function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 2e3}) {
     </>;
 };
 
-function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDuration) {
+function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDuration, infiniteSwitch) {
     const aside = parentWord.children[0], div = parentWord.children[1];
 
     aside.innerText = biggestWord.innerText;
 
-    let fullTimeout = 0;
-    switchedText.forEach((text, ind) => {
-        fullTimeout += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration;
-        setTimeout(() => {
-            const textStr = [...text.split('')];
-            textStr.forEach((str, indStr) => {
-                setTimeout(() => div.innerText = text.slice(0, indStr + 1), typeSpeed * indStr);
-                // if (ind !== switchedText.length - 1) 
-                setTimeout(() => div.innerText = text.slice(0, text.length - (indStr + 1)), typeSpeed * text.length + wordDuration + (typeSpeed / 2) * indStr);
-            });
-        }, fullTimeout);
-    });
+    let fullTimeout = 0, intervalCount = 0;
+    let switchInterval = setInterval(() => {
+        intervalCount++;
+
+        if (!infiniteSwitch) clearInterval(switchInterval);
+
+        fullTimeout = 0;
+        switchedText.forEach((text, ind) => {
+            fullTimeout += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration;
+            setTimeout(() => {
+                const textStr = [...text.split('')];
+                textStr.forEach((str, indStr) => {
+                    setTimeout(() => div.innerText = text.slice(0, indStr + 1), typeSpeed * indStr);
+                    if (ind !== switchedText.length - 1) setTimeout(() => div.innerText = text.slice(0, text.length - (indStr + 1)), typeSpeed * text.length + wordDuration + (typeSpeed / 2) * indStr);
+                });
+            }, fullTimeout);
+        });
+    }, fullTimeout + wordDuration);
 };
 
 function setWords() {

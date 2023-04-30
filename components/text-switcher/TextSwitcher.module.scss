@@ -3,18 +3,19 @@
 
     div {
         position: absolute;
+        height: 1em;
 
         &::after {
             content: "";
             position: absolute;
-            bottom: 50%;
+            bottom: 0;
             right: 0;
-            translate: 0.75rem 50%;
+            translate: 0.75rem;
             display: block;
             height: 1em;
             width: 0.5rem;
             background: #58f;
-            animation: name duration timing-function delay iteration-count direction fill-mode;
+            animation: .5s lightText steps(1) alternate infinite;
         }
     }
 }
@@ -26,11 +27,11 @@
 }
 
 @keyframes lightText {
-    from {
+    0%, 100% {
         opacity: 0;
     }
 
-    to {
+    50% {
         opacity: 1;
     }
 }
