@@ -86,4 +86,22 @@
 .titleMembers {
     font-size: 3em;
     text-align: center;
+    z-index: 1;
+}
+
+*:has(> .blobBackground) {
+    top: 0;
+    pointer-events: none;
+    position: absolute;
+    max-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.blobBackground {
+    width: 100%;
+    max-width: 100vw;
 }
