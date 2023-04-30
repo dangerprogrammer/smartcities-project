@@ -4,12 +4,17 @@
     div {
         position: absolute;
 
-        &::before {
+        &::after {
             content: "";
-            position: relative;
+            position: absolute;
+            bottom: 50%;
+            right: 0;
+            translate: 0.75rem 50%;
+            display: block;
             height: 1em;
-            width: .2rem;
+            width: 0.5rem;
             background: #58f;
+            animation: name duration timing-function delay iteration-count direction fill-mode;
         }
     }
 }
@@ -18,4 +23,14 @@
     list-style: none;
     visibility: hidden;
     position: absolute;
+}
+
+@keyframes lightText {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
