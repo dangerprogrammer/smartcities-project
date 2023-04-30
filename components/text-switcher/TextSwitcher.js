@@ -2,7 +2,7 @@ import styles from './TextSwitcher.module.scss';
 
 function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 2e3}) {
     let biggestWord;
-    setTimeout(() => biggestWord = setWords({switchedText, typeSpeed, wordDuration}), 1);
+    setTimeout(() => biggestWord = setWords({switchedText, typeSpeed, wordDuration}), 1e2);
 
     let loadWordInt = setInterval(() => {
         const parentWord = biggestWord.parentElement;
