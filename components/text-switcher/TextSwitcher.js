@@ -30,8 +30,12 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
     switchedText.forEach((text, ind) => {
         setTimeout(() => {
-            console.log("Opa!", (typeSpeed * text.length * 1.5 + wordDuration) * ind);
-        }, (typeSpeed + wordDuration) * ind);
+            const textStr = [...text.split('')];
+            textStr.forEach((str, indStr) => {
+                setTimeout(() => div.innerText = text.slice(0, indStr + 1), typeSpeed * indStr);
+                setTimeout(() => div.innerText = text.slice(0, text.length - (indStr + 1)), typeSpeed * text.length + wordDuration + (typeSpeed / 2) * indStr);
+            });
+        }, (typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration) * ind);
     });
 };
 

@@ -1,5 +1,9 @@
 *:has(> .shadowWord) {
     position: relative;
+
+    div {
+        position: absolute;
+    }
 }
 
 .shadowWord {
