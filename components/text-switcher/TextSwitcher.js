@@ -29,12 +29,14 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
     shadowRes.innerHTML = biggestWord.innerHTML;
 
-    let fullTimeout = 0, intervalTime = 0, intervalCount = 0, startDelay = 0, firstLoad;
+    let fullTimeout = 0, intervalTime = 0, intervalCount = 0, startDelay = 0, firstLoad = !0;
 
     switchedText.forEach((text, ind) => intervalTime += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration);
 
+    console.log(intervalTime);
+
     if (startWord !== undefined) {
-        firstLoad = !0;
+        firstLoad = !1;
 
         const findedWord = switchedText[startWord] || switchedText[0];
 
@@ -53,12 +55,12 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
     let switchInterval;
     setTimeout(() => {
         loadEachWord();
+
         switchInterval = setInterval(() => {
         intervalCount++;
 
         if (!infiniteSwitch) clearInterval(switchInterval);
 
-        fullTimeout = 0;
         firstLoad = !1;
 
         loadEachWord();
@@ -71,15 +73,15 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
         switchedText.forEach((text, ind) => {
             fullTimeout += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration;
 
-            if (startWord !== undefined && !(ind <= startWord && firstLoad)) {
-                setTimeout(() => {
-                    const textStr = [...text.split('')];
-                    textStr.forEach((str, indStr) => {
-                        setTimeout(() => div.innerText = text.slice(0, indStr + 1), typeSpeed * indStr);
-                        if (infiniteSwitch || ind !== switchedText.length - 1) setTimeout(() => div.innerText = text.slice(0, text.length - (indStr + 1)), typeSpeed * text.length + wordDuration + (typeSpeed / 2) * indStr);
-                    });
-                }, fullTimeout);
-            };
+            if (startWord !== undefined && firstLoad && ind <= startWord) return;
+
+            setTimeout(() => {
+                const textStr = [...text.split('')];
+                textStr.forEach((str, indStr) => {
+                    setTimeout(() => div.innerText = text.slice(0, indStr + 1), typeSpeed * indStr);
+                    if (infiniteSwitch || ind !== switchedText.length - 1) setTimeout(() => div.innerText = text.slice(0, text.length - (indStr + 1)), typeSpeed * text.length + wordDuration + (typeSpeed / 2) * indStr);
+                });
+            }, fullTimeout);
         });
     };
 };
