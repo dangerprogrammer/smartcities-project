@@ -1,10 +1,10 @@
 import styles from './TextSwitcher.module.scss';
 
-function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 2e3, infiniteSwitch}) {
+function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 3e3, infiniteSwitch}) {
     let biggestWord;
     let loadSystem = setInterval(() => {
         let word0 = document.querySelector('li[id*="shadow-"]');
-        if (!word0 || word0.offsetHeight + word0.offsetWidth === 0) return <span>Teste</span>;
+        if (!word0 || word0.offsetHeight + word0.offsetWidth === 0) return;
         else clearInterval(loadSystem);
 
         biggestWord = setWords();
@@ -20,21 +20,32 @@ function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 2e3, infini
         <div></div>
         {switchedText.map((text, ind) => <li key={ind} id={`shadow-${ind}`} className={styles.shadowWord}>{text}</li>)}
     </span>
+    <span className={styles.shadowRes}></span>
     </>;
 };
 
 function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDuration, infiniteSwitch) {
-    const aside = parentWord.children[0], div = parentWord.children[1];
+    const shadowRes = document.querySelector(`[class*="${styles.shadowRes}"]`), div = parentWord.children[1];
 
-    aside.innerText = biggestWord.innerText;
+    shadowRes.innerHTML = biggestWord.innerHTML;
+
+    console.log(biggestWord, biggestWord.innerText);
 
     let fullTimeout = 0, intervalCount = 0;
+
+    loadEachWord();
+
     let switchInterval = setInterval(() => {
         intervalCount++;
 
         if (!infiniteSwitch) clearInterval(switchInterval);
 
         fullTimeout = 0;
+
+        loadEachWord();
+    }, fullTimeout + wordDuration);
+
+    function loadEachWord() {
         switchedText.forEach((text, ind) => {
             fullTimeout += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration;
             setTimeout(() => {
@@ -45,7 +56,7 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
                 });
             }, fullTimeout);
         });
-    }, fullTimeout + wordDuration);
+    };
 };
 
 function setWords() {

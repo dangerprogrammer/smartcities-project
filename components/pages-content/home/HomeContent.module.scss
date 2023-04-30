@@ -22,6 +22,8 @@
 .pageTitle {
     font-size: 3em;
     word-break: normal;
+    --ln-height: 1.3em;
+    line-height: var(--ln-height);
 }
 
 .homeImage {

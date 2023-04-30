@@ -25,8 +25,11 @@ function HomeContent() {
       {/* <div className={`${styles.homeImage} logo-website`}></div> */}
       <div>
         <h1 className={styles.pageTitle}>Um projeto sobre
-        <br/>
-        cidades <br/><TextSwitcher switchedText={switchedText}/></h1>
+          <br/>
+          cidades
+          <br/>
+          <TextSwitcher switchedText={switchedText} infiniteSwitch/>
+        </h1>
       </div>
       <BackgroundContent className={styles.homeBackground}/>
     </PageContent>
