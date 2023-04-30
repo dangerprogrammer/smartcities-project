@@ -29,12 +29,11 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
     shadowRes.innerHTML = biggestWord.innerHTML;
 
-    let fullTimeout = 0, intervalTime = 0, intervalCount = 0, startDelay = 0, firstLoad = !0;
+    let fullTimeout = 0, intervalTime = 0, intervalCount = 0, startDelay = 0;
 
     switchedText.forEach((text, ind) => intervalTime += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration);
 
     if (startWord !== undefined) {
-        firstLoad = !1;
 
         const findedWords = switchedText.filter((text, ind) => ind >= startWord);
 
@@ -63,18 +62,14 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
     let switchInterval;
     setTimeout(() => {
-        if (startDelay) firstLoad = !1;
-
         loadEachWord();
 
         switchInterval = setInterval(() => {
-        intervalCount++;
+            intervalCount++;
 
-        if (!infiniteSwitch) clearInterval(switchInterval);
+            if (!infiniteSwitch) clearInterval(switchInterval);
 
-        firstLoad = !1;
-
-        loadEachWord();
+            loadEachWord();
         }, intervalTime);
     }, startDelay);
 
@@ -83,8 +78,6 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
         switchedText.forEach((text, ind) => {
             fullTimeout += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration;
-
-            if (startWord !== undefined && firstLoad && ind <= startWord) return console.log("stop! first load");
 
             setTimeout(() => {
                 console.log(`writing word ${text}`);
