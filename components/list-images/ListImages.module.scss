@@ -24,8 +24,8 @@
     .imageContent {
         position: relative;
         display: block;
-        height: var(--size);
-        width: var(--size);
+        height: clamp(calc(var(--size) / 2), 10vw, var(--size));
+        width: clamp(calc(var(--size) / 2), 10vw, var(--size));
         align-items: center;
         justify-content: center;
         border-radius: 50%;

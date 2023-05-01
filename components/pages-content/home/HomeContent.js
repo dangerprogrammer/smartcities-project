@@ -28,7 +28,7 @@ function HomeContent() {
           <br/>
           cidades
           <br/>
-          <TextSwitcher switchedText={switchedText} infiniteSwitch/>
+          {/* <TextSwitcher switchedText={switchedText} infiniteSwitch/> */}
         </h1>
       </div>
       <BackgroundContent className={styles.homeBackground}/>
@@ -123,7 +123,9 @@ function animateItemsLoader() {
       if (y < 0 - size) {
         delete polygons[ind];
 
-        buildPolygon({y: canvas.height + 60});
+        const size = random(30, 60);
+
+        buildPolygon({size, y: canvas.height + size});
       };
     });
   };
