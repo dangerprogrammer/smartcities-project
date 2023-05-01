@@ -122,7 +122,7 @@ function animateItemsLoader() {
           return finalStr;
         };
 
-      const startColor = {red: 34, green: 85, blue: 255}, finalColor = {red: 136, green: 136, blue: 136}, strokeColor = fromColorTo(startColor, finalColor, ind == 0);
+      const startColor = {red: 255, green: 0, blue: 0}, finalColor = {red: 255, green: 255, blue: 255}, strokeColor = fromColorTo(startColor, finalColor, ind == 0);
 
       if (ind == 0) {
         canvas2d.strokeStyle = 'red';
@@ -165,6 +165,8 @@ function animateItemsLoader() {
     for (let c = 0; c < between(5, count, 50); c++) buildPolygon();
   };
 
+  const polygonSpeed = 8e1;
+
   function buildPolygon(props = {}) {
     const h = canvas.height, w = canvas.width;
 
@@ -172,7 +174,7 @@ function animateItemsLoader() {
     props.x ??= randomInt(props.size, w - props.size);
     props.y ??= randomInt(props.size, h - props.size);
     props.color ??= '#888';
-    props.speedY = props.size ** -1 * -8;
+    props.speedY = props.size ** -1 * (polygonSpeed * -1);
 
     const {size, x, y, color, speedY} = props;
 
