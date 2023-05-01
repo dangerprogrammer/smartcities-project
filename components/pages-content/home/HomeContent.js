@@ -116,10 +116,10 @@ function animateItemsLoader() {
           return finalStr;
         };
 
-      const longestColor = {red: 34, green: 85, blue: 255}, nearestColor = {red: 136, green: 136, blue: 136}, strokeColor = fromColorTo(longestColor, nearestColor);
+      const longestColor = {red: 255, green: 0, blue: 0}, nearestColor = {red: 0, green: 255, blue: 0}, strokeColor = fromColorTo(longestColor, nearestColor);
 
-      // canvas2d.strokeStyle = strokeColor;
-      canvas2d.strokeStyle = '#888';
+      canvas2d.strokeStyle = strokeColor;
+      // canvas2d.strokeStyle = '#888';
 
       const fullyX = (side) => x + size * Math.cos(2 * Math.PI * (side / 6 + 1 / 12)),
         fullyY = (side) => y + size * Math.sin(2 * Math.PI * (side / 6 + 1 / 12));
