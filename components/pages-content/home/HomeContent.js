@@ -28,7 +28,7 @@ function HomeContent() {
           <br/>
           cidades
           <br/>
-          {/* <TextSwitcher switchedText={switchedText} infiniteSwitch/> */}
+          <TextSwitcher switchedText={switchedText} infiniteSwitch/>
         </h1>
       </div>
       <BackgroundContent className={styles.homeBackground}/>
@@ -92,11 +92,22 @@ function animateItemsLoader() {
     canvas2d.lineWidth = 3;
     canvas2d.globalAlpha = .4;
 
+    window.polygons = polygons;
+
     polygons.forEach(({size, x, y, color, speedY}, ind) => {
       canvas2d.save();
 
+      const h = canvas.height, w = canvas.width, centerY = h / 2, centerX = w / 2;
+
       polygons[ind].y = y + speedY;
       y = polygons[ind].y;
+
+      const proximity = ((centerX - x) ** 2 + (centerY - y) ** 2) ** -2;
+
+      if (ind === 0) {
+        console.log(Math.round(proximity));
+        canvas2d.strokeStyle = `#f${Math.round(proximity).toString(16)}${Math.round(proximity).toString(16)}`;
+      } else canvas2d.strokeStyle = color;
 
       const fullyX = (side) => x + size * Math.cos(2 * Math.PI * (side / 6 + 1 / 12)),
         fullyY = (side) => y + size * Math.sin(2 * Math.PI * (side / 6 + 1 / 12));
@@ -105,8 +116,6 @@ function animateItemsLoader() {
 
       canvas2d.beginPath();
       canvas2d.moveTo(fullyX(side), fullyY(side));
-
-      canvas2d.strokeStyle = color;
 
       for (side = 1; side <= 6; side++) {
         canvas2d.lineTo(fullyX(side), fullyY(side));
