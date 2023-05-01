@@ -165,7 +165,7 @@ function animateItemsLoader() {
     for (let c = 0; c < between(5, count, 50); c++) buildPolygon();
   };
 
-  const polygonSpeed = 8e1;
+  const polygonSpeed = 5e1;
 
   function buildPolygon(props = {}) {
     const h = canvas.height, w = canvas.width;
