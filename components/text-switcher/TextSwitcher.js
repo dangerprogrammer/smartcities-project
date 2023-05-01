@@ -31,7 +31,7 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
     let fullTimeout = 0, intervalTime = 0, intervalCount = 0, startDelay = 0;
 
-    switchedText.forEach((text, ind) => intervalTime += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration * 2);
+    switchedText.forEach((text, ind) => intervalTime += typeSpeed * text.length * 2.5 + wordDuration);
 
     if (startWord !== undefined) {
 
