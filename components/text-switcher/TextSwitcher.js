@@ -52,7 +52,6 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
             startDelay += (typeSpeed / 2) * (findedWords[ind - 1] ? findedWords[ind - 1].length : 0) + wordDuration;
 
             setTimeout(() => {
-                let date = new Date(), h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
                 const textStr = [...findedWord.split('')];
                 textStr.forEach((str, indStr) => {
                     setTimeout(() => div.innerText = findedWord.slice(0, indStr + 1), typeSpeed * findedWord.length);
@@ -73,8 +72,6 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
             fullTimeout = 0;
 
-            let date = new Date(), h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
-            console.log("interval each word", `at ${h}:${m}:${s}`);
             loadEachWord();
         }, intervalTime);
     }, startDelay);
@@ -84,8 +81,6 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
             fullTimeout += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration;
 
             setTimeout(() => {
-                let date = new Date(), h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
-                console.log(`writing word ${text}`, `at ${h}:${m}:${s}`);
                 const textStr = [...text.split('')];
                 textStr.forEach((str, indStr) => {
                     setTimeout(() => div.innerText = text.slice(0, indStr + 1), typeSpeed * indStr);
