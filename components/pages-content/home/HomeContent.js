@@ -22,13 +22,12 @@ function HomeContent() {
 
   return <PageContainer id="home-page">
     <PageContent className={styles.contentPage} outsideSize={<canvas className={styles.canvasElement} id="home-background"></canvas>}>
-      {/* <div className={`${styles.homeImage} logo-website`}></div> */}
       <div>
         <h1 className={styles.pageTitle}>Um projeto sobre
           <br/>
           cidades
           <br/>
-          {/* <TextSwitcher switchedText={switchedText} infiniteSwitch/> */}
+          <TextSwitcher switchedText={switchedText} infiniteSwitch/>
         </h1>
       </div>
       <BackgroundContent className={styles.homeBackground}/>
@@ -119,7 +118,8 @@ function animateItemsLoader() {
 
       const longestColor = {red: 34, green: 85, blue: 255}, nearestColor = {red: 136, green: 136, blue: 136}, strokeColor = fromColorTo(longestColor, nearestColor);
 
-      canvas2d.strokeStyle = strokeColor;
+      // canvas2d.strokeStyle = strokeColor;
+      canvas2d.strokeStyle = '#888';
 
       const fullyX = (side) => x + size * Math.cos(2 * Math.PI * (side / 6 + 1 / 12)),
         fullyY = (side) => y + size * Math.sin(2 * Math.PI * (side / 6 + 1 / 12));
