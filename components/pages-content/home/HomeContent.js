@@ -102,7 +102,11 @@ function animateItemsLoader() {
       polygons[ind].y = y + speedY;
       y = polygons[ind].y;
 
-      const proximityFrom = potency => potency - (Math.abs(x - centerX) + Math.abs(y - centerY)) / ((centerX + centerY) / potency),
+      const distanceBetween = (a, b) => ((b.x - a.x) ** 2 + (b.y - a.y) ** 2) ** 1/2,
+        maxDistance = distanceBetween({x: 0, y: 0}, {x: centerX, y: centerY}),
+        proximityFrom = potency =>
+          (maxDistance - distanceBetween({x, y}, {x: centerX, y: centerY})) /
+          (maxDistance / potency),
         fromColorTo = (longest, nearest, log) => {
           const longestStr = `rgb(${longest.red},${longest.green},${longest.blue})`, nearestStr = `rgb(${nearest.red},${nearest.green},${nearest.blue})`;
           let red = nearest.red - longest.red, green = nearest.green - longest.green, blue = nearest.blue - longest.blue, finalStr = 'rgb(';
@@ -113,6 +117,7 @@ function animateItemsLoader() {
           finalStr += `${red},`;finalStr += `${green},`;finalStr += `${blue}`;
           finalStr += ')';
           if (log) {
+            return;
             console.group('Teste');
             console.log('%c ', `background-color: ${finalStr}`, `color: ${finalStr}`);
             console.log('%c ', `background-color: ${longestStr}`, `longest: ${longestStr}`);
@@ -123,6 +128,8 @@ function animateItemsLoader() {
         };
 
       const startColor = {red: 255, green: 0, blue: 0}, finalColor = {red: 255, green: 255, blue: 255}, strokeColor = fromColorTo(startColor, finalColor, ind == 0);
+
+      window.distanceBetween = distanceBetween;
 
       if (ind == 0) {
         canvas2d.strokeStyle = 'red';
