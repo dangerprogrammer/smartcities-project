@@ -31,7 +31,7 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
     let fullTimeout = 0, intervalTime = 0, intervalCount = 0, startDelay = 0;
 
-    switchedText.forEach((text, ind) => intervalTime += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration);
+    switchedText.forEach((text, ind) => intervalTime += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration * 2);
 
     if (startWord !== undefined) {
 
@@ -41,16 +41,18 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
         div.innerText = findedWords[0];
 
+        startDelay += typeSpeed * findedWords[0].length + wordDuration;
+
         const textStr = [...findedWords[0].split('')];
         textStr.forEach((str, indStr) => {
-            setTimeout(() => div.innerText = findedWords[0].slice(0, findedWords[0].length - (indStr + 1)), typeSpeed * findedWords[0].length + wordDuration + (typeSpeed / 2) * indStr);
+            setTimeout(() => div.innerText = findedWords[0].slice(0, findedWords[0].length - (indStr + 1)), wordDuration + (typeSpeed / 2) * indStr);
         });
 
-        findedWords.forEach((findedWord, ind) => {
+        findedWords.filter((text, ind) => ind > 0).forEach((findedWord, ind) => {
             startDelay += (typeSpeed / 2) * (findedWords[ind - 1] ? findedWords[ind - 1].length : 0) + wordDuration;
 
             setTimeout(() => {
-                console.log(`writing finded word ${findedWord}`);
+                let date = new Date(), h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
                 const textStr = [...findedWord.split('')];
                 textStr.forEach((str, indStr) => {
                     setTimeout(() => div.innerText = findedWord.slice(0, indStr + 1), typeSpeed * findedWord.length);
@@ -69,7 +71,10 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
             if (!infiniteSwitch) clearInterval(switchInterval);
 
-            console.log("interval each word")
+            fullTimeout = 0;
+
+            let date = new Date(), h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
+            console.log("interval each word", `at ${h}:${m}:${s}`);
             loadEachWord();
         }, intervalTime);
     }, startDelay);
@@ -79,7 +84,8 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
             fullTimeout += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration;
 
             setTimeout(() => {
-                console.log(`writing word ${text}`);
+                let date = new Date(), h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
+                console.log(`writing word ${text}`, `at ${h}:${m}:${s}`);
                 const textStr = [...text.split('')];
                 textStr.forEach((str, indStr) => {
                     setTimeout(() => div.innerText = text.slice(0, indStr + 1), typeSpeed * indStr);

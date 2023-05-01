@@ -108,7 +108,13 @@ function animateItemsLoader() {
 
       canvas2d.strokeStyle = color;
 
-      for (side = 1; side <= 6; side++) canvas2d.lineTo(fullyX(side), fullyY(side));
+      for (side = 1; side <= 6; side++) {
+        canvas2d.lineTo(fullyX(side), fullyY(side));
+        if (side % 2) {
+          canvas2d.lineTo(x, y);
+          canvas2d.lineTo(fullyX(side), fullyY(side));
+        }
+      };
 
       canvas2d.closePath();
       canvas2d.stroke();
@@ -134,7 +140,7 @@ function animateItemsLoader() {
     props.size ??= random(30, 60);
     props.x ??= randomInt(props.size, w - props.size);
     props.y ??= randomInt(props.size, h - props.size);
-    props.color ??= '#25f';
+    props.color ??= '#888';
     props.speedY = props.size ** -1 * -3e1;
 
     const {size, x, y, color, speedY} = props;
