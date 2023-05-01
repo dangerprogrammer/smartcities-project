@@ -28,7 +28,7 @@ function HomeContent() {
           <br/>
           cidades
           <br/>
-          <TextSwitcher switchedText={switchedText} startWord={1} infiniteSwitch/>
+          <TextSwitcher switchedText={switchedText} infiniteSwitch/>
         </h1>
       </div>
       <BackgroundContent className={styles.homeBackground}/>

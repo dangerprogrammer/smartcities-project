@@ -1,6 +1,6 @@
 import styles from './TextSwitcher.module.scss';
 
-function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 3e3, startWord, infiniteSwitch}) {
+function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 3e3, startWord = 0, infiniteSwitch}) {
     let biggestWord;
     let loadSystem = setInterval(() => {
         let word0 = document.querySelector('li[id*="shadow-"]');
@@ -33,33 +33,30 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
     switchedText.forEach((text, ind) => intervalTime += typeSpeed * text.length * 2.5 + wordDuration);
 
-    if (startWord !== undefined) {
+    const findedWords = switchedText.filter((text, ind) => ind >= startWord);
 
-        const findedWords = switchedText.filter((text, ind) => ind >= startWord);
+    if (!findedWords.length) return;
 
-        if (!findedWords.length) return;
+    div.innerText = findedWords[0];
 
-        div.innerText = findedWords[0];
+    startDelay += typeSpeed * findedWords[0].length + wordDuration;
 
-        startDelay += typeSpeed * findedWords[0].length + wordDuration;
+    const textStr = [...findedWords[0].split('')];
+    textStr.forEach((str, indStr) => {
+        setTimeout(() => div.innerText = findedWords[0].slice(0, findedWords[0].length - (indStr + 1)), wordDuration + (typeSpeed / 2) * indStr);
+    });
 
-        const textStr = [...findedWords[0].split('')];
-        textStr.forEach((str, indStr) => {
-            setTimeout(() => div.innerText = findedWords[0].slice(0, findedWords[0].length - (indStr + 1)), wordDuration + (typeSpeed / 2) * indStr);
-        });
+    findedWords.filter((text, ind) => ind > 0).forEach((findedWord, ind) => {
+        startDelay += typeSpeed * (findedWords[ind - 1] ? findedWords[ind - 1].length : 0) * 2.5 + wordDuration;
 
-        findedWords.filter((text, ind) => ind > 0).forEach((findedWord, ind) => {
-            startDelay += (typeSpeed / 2) * (findedWords[ind - 1] ? findedWords[ind - 1].length : 0) + wordDuration;
-
-            setTimeout(() => {
-                const textStr = [...findedWord.split('')];
-                textStr.forEach((str, indStr) => {
-                    setTimeout(() => div.innerText = findedWord.slice(0, indStr + 1), typeSpeed * findedWord.length);
-                    setTimeout(() => div.innerText = findedWord.slice(0, findedWord.length - (indStr + 1)), typeSpeed * findedWord.length + wordDuration + (typeSpeed / 2) * indStr);
-                });
-            }, startDelay);
-        });
-    };
+        setTimeout(() => {
+            const textStr = [...findedWord.split('')];
+            textStr.forEach((str, indStr) => {
+                setTimeout(() => div.innerText = findedWord.slice(0, indStr + 1), typeSpeed * indStr);
+                setTimeout(() => div.innerText = findedWord.slice(0, findedWord.length - (indStr + 1)), typeSpeed * findedWord.length + wordDuration + (typeSpeed / 2) * indStr);
+            });
+        }, startDelay);
+    });
 
     let switchInterval;
     setTimeout(() => {
