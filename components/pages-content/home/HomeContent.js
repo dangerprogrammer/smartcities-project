@@ -28,7 +28,7 @@ function HomeContent() {
           <br/>
           cidades
           <br/>
-          <TextSwitcher switchedText={switchedText} infiniteSwitch/>
+          {/* <TextSwitcher switchedText={switchedText} infiniteSwitch/> */}
         </h1>
       </div>
       <BackgroundContent className={styles.homeBackground}/>
@@ -102,12 +102,32 @@ function animateItemsLoader() {
       polygons[ind].y = y + speedY;
       y = polygons[ind].y;
 
-      const proximity = ((centerX - x) ** 2 + (centerY - y) ** 2) ** -2;
+      const proximityFrom = potency => potency - (Math.abs(x - centerX) + Math.abs(y - centerY)) / ((centerX + centerY) / potency),
+        fromColorTo = (longest, nearest, log) => {
+          const longestStr = `rgb(${longest.red},${longest.green},${longest.blue})`, nearestStr = `rgb(${nearest.red},${nearest.green},${nearest.blue})`;
+          let red = nearest.red - longest.red, green = nearest.green - longest.green, blue = nearest.blue - longest.blue, finalStr = 'rgb(';
+          red = Math.max(red, 0);green = Math.max(green, 0);blue = Math.max(blue, 0);
+          red = proximityFrom(red);green = proximityFrom(green);blue = proximityFrom(blue);
+          red += longest.red;green += longest.green;blue += longest.blue;
+          red = Math.round(red);green = Math.round(green);blue = Math.round(blue);
+          finalStr += `${red},`;finalStr += `${green},`;finalStr += `${blue}`;
+          finalStr += ')';
+          if (log) {
+            console.group('Teste');
+            console.log('%c ', `background-color: ${finalStr}`, `color: ${finalStr}`);
+            console.log('%c ', `background-color: ${longestStr}`, `longest: ${longestStr}`);
+            console.log('%c ', `background-color: ${nearestStr}`, `nearest: ${nearestStr}`);
+            console.groupEnd();
+          };
+          return finalStr;
+        };
 
-      if (ind === 0) {
-        console.log(Math.round(proximity));
-        canvas2d.strokeStyle = `#f${Math.round(proximity).toString(16)}${Math.round(proximity).toString(16)}`;
-      } else canvas2d.strokeStyle = color;
+      const startColor = {red: 34, green: 85, blue: 255}, finalColor = {red: 136, green: 136, blue: 136}, strokeColor = fromColorTo(startColor, finalColor, ind == 0);
+
+      if (ind == 0) {
+        canvas2d.strokeStyle = 'red';
+        window.fromColorTo = fromColorTo;
+      } else canvas2d.strokeStyle = strokeColor;
 
       const fullyX = (side) => x + size * Math.cos(2 * Math.PI * (side / 6 + 1 / 12)),
         fullyY = (side) => y + size * Math.sin(2 * Math.PI * (side / 6 + 1 / 12));
@@ -130,7 +150,7 @@ function animateItemsLoader() {
       canvas2d.restore();
 
       if (y < 0 - size) {
-        delete polygons[ind];
+        polygons.splice(ind, 1);
 
         const size = random(30, 60);
 
@@ -152,7 +172,7 @@ function animateItemsLoader() {
     props.x ??= randomInt(props.size, w - props.size);
     props.y ??= randomInt(props.size, h - props.size);
     props.color ??= '#888';
-    props.speedY = props.size ** -1 * -3e1;
+    props.speedY = props.size ** -1 * -8;
 
     const {size, x, y, color, speedY} = props;
 
