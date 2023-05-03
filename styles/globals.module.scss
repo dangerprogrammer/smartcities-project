@@ -11,7 +11,5 @@
 }
 
 .heightFull {
-    --min-height: 100vh;
-
-    min-height: var(--min-height);
+    min-height: 100vh;
 }

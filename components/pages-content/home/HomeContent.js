@@ -58,7 +58,7 @@ function animateItemsLoader() {
   let hasRender = !1;
 
   function updateCanvas() {
-    allFullHeight.forEach(fH => fH.style.setProperty('--min-height', `${window.innerHeight}px`));
+    allFullHeight.forEach(fH => fH.style.setProperty('min-height', `${window.innerHeight}px`));
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
