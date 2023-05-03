@@ -9,3 +9,9 @@
     transition-duration: .15s;
     transition-timing-function: ease-in-out;
 }
+
+.heightFull {
+    --min-height: 100vh;
+
+    min-height: var(--min-height);
+}

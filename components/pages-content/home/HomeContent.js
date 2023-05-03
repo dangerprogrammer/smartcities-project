@@ -1,5 +1,6 @@
 import PageContainer from '@/components/page-container/PageContainer';
 import styles from './HomeContent.module.scss';
+import globalStyles from '@/styles/globals.module.scss';
 import {randomInt, random, between} from '@/scripts/global-scripts';
 import BackgroundContent from '@/components/background-content/BackgroundContent';
 import PageContent from '@/components/page-content/PageContent';
@@ -52,11 +53,12 @@ function HomeContent() {
 };
 
 function animateItemsLoader() {
-  const canvas = document.querySelector('#home-background'), canvas2d = canvas.getContext('2d'), polygons = [];
+  const canvas = document.querySelector('#home-background'), canvas2d = canvas.getContext('2d'), polygons = [], allFullHeight = [...document.querySelectorAll(`[class*="${globalStyles.heightFull}"]`)];
 
   let hasRender = !1;
 
   function updateCanvas() {
+    allFullHeight.forEach(fH => fH.style['--min-height'] = window.innerHeight);
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
@@ -90,8 +92,6 @@ function animateItemsLoader() {
   function updatePolygons() {
     canvas2d.lineWidth = 3;
     canvas2d.globalAlpha = .4;
-
-    window.polygons = polygons;
 
     polygons.forEach(({size, x, y, speedY}, ind) => {
       canvas2d.save();

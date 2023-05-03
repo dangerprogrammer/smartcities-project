@@ -3,7 +3,7 @@ import globalStyles from '@/styles/globals.module.scss';
 
 function PageContent({children, outsideSize, className, ...argsContainer}) {
     return <main className={styles.pageContent}>
-        <div className={`${globalStyles.contentSize} ${className}`} {...argsContainer}>
+        <div className={`${globalStyles.contentSize} ${globalStyles.heightFull} ${className}`} {...argsContainer}>
             {children}
         </div>
         {outsideSize}
