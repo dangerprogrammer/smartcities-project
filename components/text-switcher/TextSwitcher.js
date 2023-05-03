@@ -1,6 +1,6 @@
 import styles from './TextSwitcher.module.scss';
 
-function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 3e3, startWord = 0, infiniteSwitch}) {
+function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 3e3, startWord = 0, infiniteSwitch = !1}) {
     let biggestWord;
     let loadSystem = setInterval(() => {
         let word0 = document.querySelector('li[id*="shadow-"]');
@@ -58,6 +58,8 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
         }, startDelay);
     });
 
+    startDelay += wordDuration;
+
     let switchInterval;
     setTimeout(() => {
         loadEachWord();
@@ -65,15 +67,19 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
         switchInterval = setInterval(() => {
             intervalCount++;
 
-            if (!infiniteSwitch) clearInterval(switchInterval);
-
-            fullTimeout = 0;
+            if (!infiniteSwitch) {
+                console.log("opa, pare intervalo!");
+                clearInterval(switchInterval);
+            };
 
             loadEachWord();
         }, intervalTime);
     }, startDelay);
 
     function loadEachWord() {
+        fullTimeout = 0;
+        console.log("rodando palavras!");
+
         switchedText.forEach((text, ind) => {
             fullTimeout += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration;
 
