@@ -13,7 +13,7 @@ function ThemeSwitcher({options, defaultOption = 0, onChangeOption, idBox}) {
         };
     }, 1);
 
-    return <div className={styles.themeSwitcher}>
+    return <div className={styles.themeSwitcher} onClick={showOptions}>
         {options.map(({Content, id, Icon, ...contentArgs}) => <div className={styles.iconContent} id={`${idBox}-${id}`} key={id}>
             <span className={styles.iconBox}>
                 <Icon/>
@@ -21,6 +21,15 @@ function ThemeSwitcher({options, defaultOption = 0, onChangeOption, idBox}) {
             <Content className={styles.msgContent} onClick={ev => (setOption(), !onChangeOption || onChangeOption())} {...contentArgs}/>
         </div>)}
     </div>;
+};
+
+function showOptions(ev) {
+    ev.stopPropagation();
+    ev.preventDefault();
+
+    const elem = ev.target || ev;
+
+    console.log(elem);
 };
 
 function setOption(ev, idBox) {
