@@ -5,6 +5,15 @@
     border-radius: 3rem;
     border: 1px solid var(--border-color);
     padding: .1rem .5rem;
+    transition-property: width;
+
+    &.freezeChild {
+        cursor: pointer;
+    }
+}
+
+.freezeChild > * {
+    pointer-events: none;
 }
 
 .iconContent {
