@@ -1,7 +1,6 @@
-import Image from 'next/image';
 import styles from './Navbar.module.scss';
 import globalStyles from '../../styles/globals.module.scss';
-import MsgBox from '../msgbox/MsgBox';
+import ThemeSwitcher from '../theme-switcher/ThemeSwitcher';
 
 function Navbar({title}) {
     setTimeout(loadScroll, 1);
@@ -26,7 +25,8 @@ function Navbar({title}) {
                 <h1>{title}</h1>
             </div>
             <div>
-                <MsgBox spawnFrom="top" options={optionsTheme} onChangeOption={changeTheme} idBox="theme-selector"/>
+                <ThemeSwitcher options={optionsTheme} onChangeOption={changeTheme} idBox="theme-selector"/>
+                {/* <MsgBox spawnFrom="top" options={optionsTheme} onChangeOption={changeTheme} idBox="theme-selector"/> */}
             </div>
         </main>
     </nav>
@@ -35,9 +35,7 @@ function Navbar({title}) {
 function loadScroll() {
     const navbar = document.querySelector(`[class*="${styles.navbar}"]`);
 
-    document.addEventListener("scroll", () => {
-        navbar.classList.toggle(styles.scrolledNavbar, window.scrollY);
-    });
+    document.addEventListener("scroll", () => navbar.classList.toggle(styles.scrolledNavbar, window.scrollY));
 };
 
 const themeActions = {

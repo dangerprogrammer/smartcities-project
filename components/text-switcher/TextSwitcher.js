@@ -3,6 +3,8 @@ import styles from './TextSwitcher.module.scss';
 function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 3e3, startWord = 0, infiniteSwitch = !1}) {
     let biggestWord;
     let loadSystem = setInterval(() => {
+        if (!document) return;
+        
         let word0 = document.querySelector('li[id*="shadow-"]');
         if (!word0 || word0.offsetHeight + word0.offsetWidth === 0) return;
         else clearInterval(loadSystem);
@@ -78,7 +80,6 @@ function loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDura
 
     function loadEachWord() {
         fullTimeout = 0;
-        console.log("rodando palavras!");
 
         switchedText.forEach((text, ind) => {
             fullTimeout += typeSpeed * (switchedText[ind - 1] ? switchedText[ind - 1].length : 0) * 2.5 + wordDuration;
