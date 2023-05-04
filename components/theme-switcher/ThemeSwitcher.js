@@ -4,10 +4,12 @@ function ThemeSwitcher({options, defaultOption = 0, onChangeOption, idBox}) {
     if (!options ?? !idBox) return;
     
     setTimeout(() => {
-        if (document) {
+        try {
             let ev = document.querySelectorAll(`div[id*="${idBox}"]`)[defaultOption];
             setOption(ev, idBox);
             !onChangeOption || onChangeOption(ev, idBox);
+        } catch (error) {
+            
         };
     }, 1);
 

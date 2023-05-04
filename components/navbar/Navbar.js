@@ -33,9 +33,13 @@ function Navbar({title}) {
 };
 
 function loadScroll() {
-    const navbar = document.querySelector(`[class*="${styles.navbar}"]`);
+    try {
+        const navbar = document.querySelector(`[class*="${styles.navbar}"]`);
 
-    document.addEventListener("scroll", () => navbar.classList.toggle(styles.scrolledNavbar, window.scrollY));
+        document.addEventListener("scroll", () => navbar.classList.toggle(styles.scrolledNavbar, window.scrollY));
+    } catch (error) {
+
+    };
 };
 
 const themeActions = {

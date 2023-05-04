@@ -53,6 +53,7 @@ function HomeContent() {
 };
 
 function animateItemsLoader() {
+  try {
   const canvas = document.querySelector('#home-background'), canvas2d = canvas.getContext('2d'), polygons = [], allFullHeight = [...document.querySelectorAll(`[class*="${globalStyles.heightFull}"]`)];
 
   let hasRender = !1;
@@ -170,6 +171,9 @@ function animateItemsLoader() {
     const {size, x, y, speedY} = props;
 
     polygons.push({size, x, y, speedY});
+  };
+  } catch (error) {
+
   };
 };
 
