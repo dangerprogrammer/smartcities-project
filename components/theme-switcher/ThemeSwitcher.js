@@ -8,7 +8,7 @@ function ThemeSwitcher({options, defaultOption = 0, onChangeOption, idBox}) {
             let ev = document.querySelectorAll(`div[id*="${idBox}"]`)[defaultOption]
             , themeSwitcher = document.querySelector(`div[class*="${styles.themeSwitcher}"]`);
             setOption(ev, idBox);
-            showOptions(themeSwitcher, !0);
+            showOptions(themeSwitcher, !1);
             !onChangeOption || onChangeOption(ev, idBox);
         } catch (error) {
             
@@ -35,9 +35,16 @@ function showOptions(ev, forceState) {
 
     elem.classList.toggle(freezeChild, forceState);
 
-    const hasFreeze = elem.classList.contains(freezeChild);
+    const hasFreeze = elem.classList.contains(freezeChild), childsWidth = [...elem.children].map(child => child.offsetWidth),
+        elemWidth = hasFreeze ? childsWidth[0] : childsWidth.reduce((acc, curr) => acc + curr);
 
-    console.log("hasFreeze:", hasFreeze);
+    setTimeout(() => {
+        const {paddingLeft, paddingRight} = getComputedStyle(elem);
+
+        elem.style.width = `calc(${elemWidth}px + ${paddingLeft} + ${paddingRight})`;
+
+        console.log("paddingLeft:", paddingLeft);
+    });
 };
 
 function setOption(ev, idBox) {
