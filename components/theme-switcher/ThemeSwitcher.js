@@ -15,7 +15,7 @@ function ThemeSwitcher({options, defaultOption = 0, onChangeOption, idBox}) {
 
     return <div className={styles.themeSwitcher}>
         {options.map(({Content, id, Icon, ...contentArgs}) => <div className={styles.iconContent} id={`${idBox}-${id}`} key={id}>
-            <span>
+            <span className={styles.iconBox}>
                 <Icon/>
             </span>
             <Content className={styles.msgContent} onClick={ev => (setOption(), !onChangeOption || onChangeOption())} {...contentArgs}/>
