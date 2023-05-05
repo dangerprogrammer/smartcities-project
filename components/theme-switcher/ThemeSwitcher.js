@@ -38,13 +38,11 @@ function showOptions(ev, forceState) {
     const hasFreeze = elem.classList.contains(freezeChild), childsWidth = [...elem.children].map(child => child.offsetWidth),
         elemWidth = hasFreeze ? childsWidth[0] : childsWidth.reduce((acc, curr) => acc + curr);
 
-    setTimeout(() => {
-        const {paddingLeft, paddingRight} = getComputedStyle(elem);
+    const padding = hasFreeze ? '8px' : '0px';
 
-        elem.style.width = `calc(${elemWidth}px + ${paddingLeft} + ${paddingRight})`;
+    elem.style.width = `calc(${elemWidth}px + ${padding} * 2)`;
 
-        console.log("paddingLeft:", paddingLeft);
-    });
+    console.log("hasFreeze:", hasFreeze);
 };
 
 function setOption(ev, idBox) {
