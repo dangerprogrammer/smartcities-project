@@ -73,7 +73,7 @@ function loadDOM(idBox, onChangeOption) {
 };
 
 function showOptions(idBox, forceState) {
-    const optionsContent = document.querySelector(`div[class*="${styles.optionsContent}"]`), options = [...document.querySelectorAll(`div[id^="${idBox}"]`)], optionActived = options.find(option => option.classList.contains(activeOption)), {freezeChild} = styles;
+    const optionsContent = document.querySelector(`div[class*="${styles.optionsContent}"]`), options = [...document.querySelectorAll(`div[id^="${idBox}"]`)], {freezeChild, activeOption} = styles, optionActived = options.find(option => option.classList.contains(activeOption));
 
     optionsContent.classList.toggle(freezeChild, forceState);
 
@@ -82,8 +82,12 @@ function showOptions(idBox, forceState) {
 
     optionsContent.style.setProperty('--width-size', `calc(${elemWidth}px + ${paddingLeft} + ${paddingRight})`);
     if (hasFreeze) setTimeout(() => {
-        optionsContent.scrollTo(optionActived.offsetLeft, 0);
-    }, timeout + 1e3);
+        optionsContent.scrollTo({
+            top: 0,
+            left: optionActived.offsetLeft,
+            behavior: "smooth"
+        });
+    }, timeout);
 };
 
 function setOption(ev, idBox) {

@@ -1,7 +1,6 @@
 .themeSwitcher {
     position: relative;
     display: flex;
-    align-items: center;
     justify-content: flex-end;
     border-radius: 3rem;
     border: 1px solid var(--border-color);
@@ -9,8 +8,6 @@
 
 .optionsContent {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
     overflow: hidden;
     transition: .2s ease-in-out;
     padding: .1rem .25rem;
@@ -27,6 +24,7 @@
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
+    position: relative;
 }
 
 .showElem {
@@ -38,6 +36,7 @@
     pointer-events: none;
     position: absolute;
     overflow: visible;
+    justify-content: flex-end;
     flex-direction: row-reverse;
 
     .iconContent {
