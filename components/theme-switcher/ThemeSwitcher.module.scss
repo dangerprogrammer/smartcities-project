@@ -10,8 +10,8 @@
 .optionsContent {
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
-    // overflow: hidden;
+    justify-content: flex-end;
+    overflow: hidden;
     transition: .2s ease-in-out;
     padding: .1rem .25rem;
     border-radius: 3rem;
@@ -23,6 +23,12 @@
     }
 }
 
+.iconsContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
 .showElem {
     opacity: 1;
     translate: 0 100%;
@@ -32,6 +38,7 @@
     pointer-events: none;
     position: absolute;
     overflow: visible;
+    flex-direction: row-reverse;
 
     .iconContent {
         &:not(.showElem) {
