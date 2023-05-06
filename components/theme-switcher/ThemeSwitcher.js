@@ -87,7 +87,7 @@ function showOptions(idBox, forceState) {
             left: optionActived.offsetLeft - (optionsContent.offsetWidth - optionActived.offsetWidth) / 2,
             behavior: "smooth"
         });
-    }, timeout);
+    }, timeout + 1e2);
 };
 
 function setOption(ev, idBox) {
