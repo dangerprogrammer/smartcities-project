@@ -8,7 +8,7 @@ function ThemeSwitcher({options, defaultOption = 0, onChangeOption, idBox}) {
             let ev = document.querySelectorAll(`div[id^="${idBox}"]`)[defaultOption];
             setOption(ev, idBox);
             loadDOM(idBox, onChangeOption);
-            showOptions(!1);
+            showOptions(!0);
             !onChangeOption || onChangeOption(ev, idBox);
         } catch (error) {
             
@@ -76,9 +76,13 @@ function showOptions(forceState) {
     optionsContent.classList.toggle(freezeChild, forceState);
 
     const hasFreeze = optionsContent.classList.contains(freezeChild), childsWidth = [...optionsContent.children].filter(child => !child.classList.contains(styles.shadowIcon)).map(child => child.offsetWidth),
-        elemWidth = childsWidth.filter((child, ind) => hasFreeze ? ind === 0 : child).reduce((acc, curr) => acc + curr), {paddingLeft, paddingRight} = getComputedStyle(optionsContent);
+        elemWidth = childsWidth.filter((child, ind) => hasFreeze ? ind === 0 : child).reduce((acc, curr) => acc + curr), {paddingLeft, paddingRight, transitionDuration} = getComputedStyle(optionsContent), timeout = eval(`${transitionDuration.slice(0, transitionDuration.length - 1)}e3`);
 
-    optionsContent.style.width = `calc(${elemWidth}px + ${paddingLeft} + ${paddingRight})`;
+    optionsContent.style.setProperty('--width-size', `calc(${elemWidth}px + ${paddingLeft} + ${paddingRight})`);
+    if (hasFreeze) setTimeout(() => {
+        console.log("scroll");
+        optionsContent.scrollTo(200, 0);
+    }, timeout + 1e3);
 };
 
 function setOption(ev, idBox) {

@@ -11,11 +11,12 @@
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
-    overflow: hidden;
+    // overflow: hidden;
     transition: .2s ease-in-out;
     padding: .1rem .25rem;
     border-radius: 3rem;
     transition-property: width;
+    width: var(--width-size);
 
     &.freezeChild {
         cursor: pointer;
