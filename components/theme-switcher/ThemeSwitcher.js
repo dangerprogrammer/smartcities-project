@@ -78,13 +78,13 @@ function showOptions(idBox, forceState) {
     optionsContent.classList.toggle(freezeChild, forceState);
 
     const hasFreeze = optionsContent.classList.contains(freezeChild), childsWidth = [...optionsContent.children[0].children].filter(child => !child.classList.contains(styles.shadowIcon)).map(child => child.offsetWidth),
-        elemWidth = childsWidth.filter((child, ind) => hasFreeze ? ind === 0 : child).reduce((acc, curr) => acc + curr), {paddingLeft, paddingRight, transitionDuration} = getComputedStyle(optionsContent), timeout = eval(`${transitionDuration.slice(0, transitionDuration.length - 1)}e3`);
+        elemWidth = childsWidth.filter((child, ind) => hasFreeze ? ind === 0 : child).reduce((acc, curr) => acc + curr), {paddingLeft, paddingRight} = getComputedStyle(optionsContent.children[0]), {transitionDuration} = getComputedStyle(optionsContent), timeout = eval(`${transitionDuration.slice(0, transitionDuration.length - 1)}e3`);
 
     optionsContent.style.setProperty('--width-size', `calc(${elemWidth}px + ${paddingLeft} + ${paddingRight})`);
     if (hasFreeze) setTimeout(() => {
         optionsContent.scrollTo({
             top: 0,
-            left: optionActived.offsetLeft,
+            left: optionActived.offsetLeft - (optionsContent.offsetWidth - optionActived.offsetWidth) / 2,
             behavior: "smooth"
         });
     }, timeout);

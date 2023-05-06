@@ -10,7 +10,6 @@
     display: flex;
     overflow: hidden;
     transition: .2s ease-in-out;
-    padding: .1rem .25rem;
     border-radius: 3rem;
     transition-property: width;
     width: var(--width-size);
@@ -25,6 +24,7 @@
     align-items: center;
     flex-direction: row-reverse;
     position: relative;
+    padding: .1rem .25rem;
 }
 
 .showElem {
