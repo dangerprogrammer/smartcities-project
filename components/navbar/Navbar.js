@@ -53,7 +53,7 @@ const themeActions = {
 };
 
 function changeTheme(ev, idBox) {
-    const select = ev.target || ev, optionValue = select.id.slice(idBox.length + 1), root = document.querySelector(':root');
+    const option = ev.target || ev, optionValue = option.id.slice(idBox.length + 1), root = document.querySelector(':root');
 
     themeActions[optionValue](root);
 };

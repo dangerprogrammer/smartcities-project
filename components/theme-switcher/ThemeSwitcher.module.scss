@@ -1,17 +1,55 @@
 .themeSwitcher {
     position: relative;
     display: flex;
-    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
     border-radius: 3rem;
     border: 1px solid var(--border-color);
-    padding: .1rem 0;
-    transition: .2s ease-in-out;
-    transition-property: width, padding;
+}
+
+.optionsContent {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
     overflow: hidden;
+    transition: .2s ease-in-out;
+    padding: .1rem .25rem;
+    border-radius: 3rem;
+    transition-property: width;
 
     &.freezeChild {
-        padding: .1rem .5rem;
         cursor: pointer;
+    }
+}
+
+.showElem {
+    opacity: 1;
+    translate: 0 100%;
+}
+
+.shadowContent {
+    pointer-events: none;
+    position: absolute;
+    overflow: visible;
+
+    .iconContent {
+        &:not(.showElem) {
+            translate: 0 calc(100% - .5em);
+        }
+        .msgContent {
+            padding: 0 .75rem;
+            border-radius: 3rem;
+            background-color: var(--body-backgroud);
+            border: 1px solid var(--border-color);
+        }
+        transition: .15s ease-in-out;
+        transition-property: opacity, translate;
+    }
+
+    .iconBox, .backOptions, .iconContent {
+        &:not(.showElem) {
+            opacity: 0;
+        }
     }
 }
 
@@ -19,17 +57,20 @@
     pointer-events: none;
 }
 
-.iconContent {
+.iconContent, .backOptions {
     position: relative;
-    height: 2em;
-    width: 2.5em;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 3rem;
     flex-shrink: 0;
     cursor: pointer;
+}
+
+.iconContent {
+    height: 2em;
+    width: 2.5em;
 }
 
 .iconBox {
@@ -38,9 +79,20 @@
     align-items: center;
     justify-content: center;
     font-size: 1.5em;
+    pointer-events: none;
 }
 
 .msgContent {
+    pointer-events: none;
     position: absolute;
-    display: none;
+}
+
+.backOptions {
+    height: 1.5em;
+    width: 1.5em;
+    opacity: .65;
+}
+
+.activeOption {
+    background: var(--select-background);
 }
