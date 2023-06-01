@@ -24,8 +24,7 @@ function Navbar({title}) {
                 <div className={`${styles.homeImage} logo-website`}></div>
                 <h1>{title}</h1>
             </div>
-            <ThemeSwitcher options={optionsTheme} onChangeOption={changeTheme} idBox="theme-selector"/>
-            {/* <MsgBox spawnFrom="top" options={optionsTheme} onChangeOption={changeTheme} idBox="theme-selector"/> */}
+            {/* <ThemeSwitcher options={optionsTheme} onChangeOption={changeTheme} idBox="theme-selector"/> */}
         </main>
     </nav>
 };
