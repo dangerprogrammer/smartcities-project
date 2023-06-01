@@ -6,6 +6,7 @@ import BackgroundContent from '@/components/background-content/BackgroundContent
 import PageContent from '@/components/page-content/PageContent';
 import ListImages from '@/components/list-images/ListImages';
 import TextSwitcher from '@/components/text-switcher/TextSwitcher';
+import ProjectsList from '@/components/projects-list/ProjectsList';
 
 function HomeContent() {
   const listMembers = [
@@ -17,7 +18,13 @@ function HomeContent() {
     {src: "/imgs/renato.jpg", name: "Renato Rinaldi"},
     {src: "/imgs/luis.jpg", name: "Luis Henrique"},
     {src: "/imgs/viktor.jpg", name: "Viktor Nachiluk Roza"}
-  ], switchedText = ['inteligentes', 'humanas', 'sustentáveis'];
+  ], switchedText = ['inteligentes', 'humanas', 'sustentáveis'], projectsList = [
+    {title: "Projeto 01", desc: "Primeiro projeto", timeDate: "Dezembro de 2049"},
+    {title: "Projeto 02", desc: "Segundo projeto", timeDate: "Dezembro de 2049"},
+    {title: "Projeto 03", desc: "Terceiro projeto", timeDate: "Dezembro de 2049"},
+    {title: "Projeto 04", desc: "Quarto projeto", timeDate: "Dezembro de 2049"},
+    {title: "Projeto 05", desc: "Quinto projeto", timeDate: "Dezembro de 2049"}
+  ];
 
   setTimeout(animateItemsLoader, 1);
 
@@ -48,6 +55,19 @@ function HomeContent() {
     }>
       <h1 className={styles.titleMembers}>Aqui estão alguns colaboradores do projeto!</h1>
       <ListImages dataList={listMembers} borderColor="white" shadow shadowColor="#1114" style={{zIndex: 1}}/>
+    </PageContent>
+    <PageContent className={styles.groupProjects} outsideSize={<>
+      <div>
+        <svg id="wave" className={`${styles.waveBackground} ${styles.waveDown}`} viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1">
+          <path d="M0 1007L45.7 1006.7C91.3 1006.3 182.7 1005.7 274.2 1011.3C365.7 1017 457.3 1029 548.8 1035.7C640.3 1042.3 731.7 1043.7 823 1042.2C914.3 1040.7 1005.7 1036.3 1097 1029.2C1188.3 1022 1279.7 1012 1371.2 1009.8C1462.7 1007.7 1554.3 1013.3 1645.8 1021.3C1737.3 1029.3 1828.7 1039.7 1874.3 1044.8L1920 1050L1920 1081L1874.3 1081C1828.7 1081 1737.3 1081 1645.8 1081C1554.3 1081 1462.7 1081 1371.2 1081C1279.7 1081 1188.3 1081 1097 1081C1005.7 1081 914.3 1081 823 1081C731.7 1081 640.3 1081 548.8 1081C457.3 1081 365.7 1081 274.2 1081C182.7 1081 91.3 1081 45.7 1081L0 1081Z" fill="#25f" strokeLinecap="round" strokeLinejoin="miter"></path>
+          <path d="M0 1000L45.7 1002.7C91.3 1005.3 182.7 1010.7 274.2 998C365.7 985.3 457.3 954.7 548.8 949C640.3 943.3 731.7 962.7 823 966.7C914.3 970.7 1005.7 959.3 1097 963.8C1188.3 968.3 1279.7 988.7 1371.2 991.2C1462.7 993.7 1554.3 978.3 1645.8 977.8C1737.3 977.3 1828.7 991.7 1874.3 998.8L1920 1006L1920 1081L1874.3 1081C1828.7 1081 1737.3 1081 1645.8 1081C1554.3 1081 1462.7 1081 1371.2 1081C1279.7 1081 1188.3 1081 1097 1081C1005.7 1081 914.3 1081 823 1081C731.7 1081 640.3 1081 548.8 1081C457.3 1081 365.7 1081 274.2 1081C182.7 1081 91.3 1081 45.7 1081L0 1081Z" fill="#25f5" strokeLinecap="round" strokeLinejoin="miter"></path>
+          <path d="M0 1044L40 1042.2C80 1040.3 160 1036.7 240 1037C320 1037.3 400 1041.7 480 1035.7C560 1029.7 640 1013.3 720 1005.3C800 997.3 880 997.7 960 1003.5C1040 1009.3 1120 1020.7 1200 1029C1280 1037.3 1360 1042.7 1440 1038.5C1520 1034.3 1600 1020.7 1680 1012.3C1760 1004 1840 1001 1880 999.5L1920 998L1920 1081L1880 1081C1840 1081 1760 1081 1680 1081C1600 1081 1520 1081 1440 1081C1360 1081 1280 1081 1200 1081C1120 1081 1040 1081 960 1081C880 1081 800 1081 720 1081C640 1081 560 1081 480 1081C400 1081 320 1081 240 1081C160 1081 80 1081 40 1081L0 1081Z" fill="#25f8" strokeLinecap="round" strokeLinejoin="miter"></path>
+        </svg>
+      </div>
+    </>
+    }>
+      <h1 className={styles.pageTitle}>Aqui estão os nossos projetos de UPX!</h1>
+      <ProjectsList list={projectsList}/>
     </PageContent>
   </PageContainer>
 };

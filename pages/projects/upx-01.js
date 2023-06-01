@@ -1,5 +1,6 @@
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
+import Upx01Content from "@/components/pages-content/upx-01/Upx01Content";
 import Head from "next/head";
 
 function Upx01() {
@@ -8,6 +9,7 @@ function Upx01() {
       <title>Bright Light | SmartCities</title>
     </Head>
       <Navbar title="Bright Light" />
+      <Upx01Content />
       <Footer />
     </>
 };
