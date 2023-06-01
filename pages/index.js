@@ -7,8 +7,8 @@ function Home() {
   <Head>
     <title>UPX - SmartCities</title>
   </Head>
-    {/* <Navbar title="SmartCities" /> */}
-    {/* <HomeContent /> */}
+    <Navbar title="SmartCities" />
+    <HomeContent />
   </>
 };
 
