@@ -1,0 +1,55 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    border-bottom: 1px solid transparent;
+    padding: 1rem 0;
+    transition-property: border, padding;
+    transition: var(--transition-default);
+    z-index: 1000;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-color: var(--body-backgroud);
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.scrolledNavbar {
+    padding: 0;
+    border-bottom-color: var(--border-color);
+    backdrop-filter: blur(.5rem);
+
+    &::before {
+        opacity: .6;
+    }
+}
+
+.navbar > * {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 0;
+}
+
+.navlogo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.homeImage {
+    flex-shrink: 0;
+    height: 3rem;
+    width: 3rem;
+}

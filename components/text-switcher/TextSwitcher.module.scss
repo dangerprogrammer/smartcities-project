@@ -1,0 +1,50 @@
+*:has(> .shadowWord) {
+    position: absolute;
+    white-space: nowrap;
+    user-select: none;
+
+    div {
+        top: 0;
+        left: 0;
+        position: absolute;
+        height: var(--ln-height);
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 50%;
+            right: 0;
+            translate: 0.75rem 50%;
+            display: block;
+            height: 1em;
+            width: 0.5rem;
+            background: #58f;
+            animation: .5s lightText steps(1) alternate infinite;
+        }
+    }
+}
+
+.shadowWord {
+    top: 0;
+    left: 0;
+    list-style: none;
+    visibility: hidden;
+    position: absolute;
+}
+
+.shadowRes {
+    position: relative;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+@keyframes lightText {
+    0%, 100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}

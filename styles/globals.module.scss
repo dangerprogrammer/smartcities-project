@@ -1,0 +1,15 @@
+.contentSize {
+    max-width: 75rem;
+    width: 100%;
+    margin: 0 calc(max(3vw, 1.5rem));
+}
+
+.hoverElem {
+    cursor: pointer;
+    transition-duration: .15s;
+    transition-timing-function: ease-in-out;
+}
+
+.heightFull {
+    min-height: 100vh;
+}
