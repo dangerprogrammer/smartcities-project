@@ -19,6 +19,7 @@
         --border-color: #333;
         --select-background: #333a;
         --hover-select-background: #444a;
+        --logo-shadow-color: #fff;
     } @else if $theme == light {
         color-scheme: light;
 
@@ -30,6 +31,7 @@
         --border-color: #ddd;
         --select-background: #ddda;
         --hover-select-background: #ccca;
+        --logo-shadow-color: transparent;
     }
 }
 

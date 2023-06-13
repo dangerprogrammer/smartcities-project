@@ -1,19 +1,47 @@
 .fullContent {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-    gap: 3rem;
+    width: 100vw;
+    counter-increment: chapter-counter;
+    padding-block: 3rem;
+
+    &:nth-child(even) {
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #25f;
+            z-index: -1;
+            opacity: .2;
+        }
+    }
+
+    section {
+        max-width: 75rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
 }
 
 .title {
     font-weight: 800;
     font-size: 3em;
+
+    &::before {
+        content: counter(chapter-counter) ". ";
+        opacity: .5;
+        font-weight: 900;
+        font-size: .7em;
+    }
 }
 
 .content {
     font-weight: 500;
     opacity: .8;
     font-size: 1.3em;
-    // text-align: center;
 }
