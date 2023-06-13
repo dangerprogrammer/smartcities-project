@@ -1,8 +1,5 @@
 import '@/styles/globals.scss';
 import '@/styles/globals.module.scss';
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] });
 
 const metadata = {
   title: 'UPX - SmartCities',
@@ -14,7 +11,7 @@ export {metadata};
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         {children}
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script noModule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
