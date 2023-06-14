@@ -1,3 +1,5 @@
+'use client';
+
 import PageContainer from '@/components/page-container/PageContainer';
 import styles from './HomeContent.module.scss';
 import globalStyles from '@/styles/globals.module.scss';
@@ -7,6 +9,7 @@ import PageContent from '@/components/page-content/PageContent';
 import ListImages from '@/components/list-images/ListImages';
 import TextSwitcher from '@/components/text-switcher/TextSwitcher';
 import ProjectsList from '@/components/projects-list/ProjectsList';
+import { useEffect } from 'react';
 
 function HomeContent() {
   const listMembers = [
@@ -19,14 +22,10 @@ function HomeContent() {
     {src: "/imgs/luis.jpg", name: "Luis Henrique"},
     {src: "/imgs/viktor.jpg", name: "Viktor Nachiluk Roza"}
   ], switchedText = ['inteligentes', 'humanas', 'sustentáveis'], projectsList = [
-    {title: "Projeto 01", desc: "Primeiro projeto", timeDate: "Dezembro de 2049"},
-    {title: "Projeto 02", desc: "Segundo projeto", timeDate: "Dezembro de 2049"},
-    {title: "Projeto 03", desc: "Terceiro projeto", timeDate: "Dezembro de 2049"},
-    {title: "Projeto 04", desc: "Quarto projeto", timeDate: "Dezembro de 2049"},
-    {title: "Projeto 05", desc: "Quinto projeto", timeDate: "Dezembro de 2049"}
+    {title: "Bright Light", desc: "A proposta do projeto é a construção de uma lâmpada inteligente, buscando diminuir a redução de gastos com energia elétrica e uma sociedade mais ergonômica. A lâmpada busca adequar sua luminosidade a partir do índice de luz proveniente do ambiente a qual está inserida.", logoClass: "logo-website", link: "/bright-light"}
   ];
 
-  setTimeout(animateItemsLoader, 1);
+  useEffect(animateItemsLoader);
 
   return <PageContainer id="home-page">
     <PageContent className={styles.contentPage} outsideSize={<canvas className={styles.canvasElement} id="home-background"></canvas>}>

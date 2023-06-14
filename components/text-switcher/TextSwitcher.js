@@ -1,22 +1,23 @@
+import { useEffect } from 'react';
 import styles from './TextSwitcher.module.scss';
 
 function TextSwitcher({switchedText, typeSpeed = 1e2, wordDuration = 3e3, startWord = 0, infiniteSwitch = !1}) {
-    let biggestWord;
-    let loadSystem = setInterval(() => {
-        try {
-            let word0 = document.querySelector('li[id*="shadow-"]');
-            if (!word0 || word0.offsetHeight + word0.offsetWidth === 0) return;
-            else clearInterval(loadSystem);
+    useEffect(() => {
+        let biggestWord;
+        let loadSystem = setInterval(() => {
+            try {
+                let word0 = document.querySelector('li[id*="shadow-"]');
+                if (!word0 || word0.offsetHeight + word0.offsetWidth === 0) return;
+                else clearInterval(loadSystem);
 
-            biggestWord = setWords();
+                biggestWord = setWords();
 
-            const parentWord = biggestWord.parentElement;
+                const parentWord = biggestWord.parentElement;
 
-            loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDuration, infiniteSwitch, startWord);
-        } catch (error) {
-            // console.error(error);
-        };
-    }, 1e2);
+                loadSwitcher(parentWord, biggestWord, switchedText, typeSpeed, wordDuration, infiniteSwitch, startWord);
+            } catch (error) {};
+        }, 1e2);
+    });
 
     return <>
     <span>

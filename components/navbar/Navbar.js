@@ -3,6 +3,8 @@
 import styles from './Navbar.module.scss';
 import globalStyles from '../../styles/globals.module.scss';
 import ThemeSwitcher from '../theme-switcher/ThemeSwitcher';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 function Navbar({title}) {
     setTimeout(loadScroll, 1);
@@ -18,12 +20,12 @@ function Navbar({title}) {
             Content: ({...args}) => <span {...args}>Escuro</span>, id: "dark",
             Icon: () => <ion-icon name="moon-outline"></ion-icon>
         }
-    ];
+    ], pathname = usePathname().slice(1);
 
     return <nav className={styles.navbar}>
             <main className={globalStyles.contentSize}>
             <div className={styles.navlogo}>
-                <div className={`${styles.homeImage} logo-website`}></div>
+                {pathname.length ? <Link href="/" className={`${styles.homeImage} logo-website`}></Link> : <div className={`${styles.homeImage} logo-website`}></div>}
                 <h1>{title}</h1>
             </div>
             <ThemeSwitcher options={optionsTheme} onChangeOption={changeTheme} idBox="theme-selector"/>

@@ -2,17 +2,54 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 2rem;
-    min-width: 20rem;
+    justify-content: center;
+    flex-wrap: wrap;
     max-width: 75vw;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scroll-snap-align: center;
-    padding: 1rem 0;
+    gap: 2rem;
+    // background: red;
 
     li {
         flex-shrink: 0;
-        background: var(--select-background);
         list-style: none;
     }
+}
+
+.projectItem {
+    display: flex;
+    padding: 1rem 2rem;
+    border: 2px solid var(--select-background);
+    border-radius: .75rem;
+    overflow: hidden;
+    flex-direction: column;
+    transition: .2s ease-in-out background;
+    max-width: 35rem;
+    gap: .6rem;
+
+    &:hover {
+        background: var(--select-background);
+    }
+
+    main {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .5em;
+    }
+
+    hr {
+        opacity: .4;
+    }
+
+    p {
+        margin-top: .75em;
+        font-size: .85em;
+        opacity: .8;
+    }
+}
+
+.logoProject {
+    flex-shrink: 0;
+    height: 3rem;
+    width: 3rem;
+    filter: drop-shadow(0 0 .65rem var(--logo-shadow-color));
 }
