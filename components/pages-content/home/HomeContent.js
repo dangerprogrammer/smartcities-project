@@ -75,14 +75,16 @@ function animateItemsLoader() {
   try {
   const canvas = document.querySelector('#home-background'), canvas2d = canvas.getContext('2d'), polygons = [], allFullHeight = [...document.querySelectorAll(`[class*="${globalStyles.heightFull}"]`)];
 
-  let hasRender = !1;
+  let hasRender = !1, totalPolygons;
 
   function updateCanvas() {
     allFullHeight.forEach(fH => fH.style.setProperty('min-height', `${window.innerHeight}px`));
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    hasRender ? updatePolygons() : generatePolygons(25);
+    totalPolygons = between(10, Math.round(canvas.width / 40), 30);
+
+    hasRender ? updatePolygons() : generatePolygons();
 
     requestAnimationFrame(updateCanvas);
     hasRender = !0;
@@ -138,11 +140,11 @@ function animateItemsLoader() {
 
       const longestColor = {red: 34, green: 85, blue: 255}, nearestColor = {red: 136, green: 136, blue: 136}, strokeColor = fromColorTo(longestColor, nearestColor);
 
-      // canvas2d.strokeStyle = strokeColor;
+      canvas2d.lineWidth = size / 18;
       canvas2d.strokeStyle = '#888';
 
-      const fullyX = (side) => x + size * Math.cos(2 * Math.PI * (side / 6 + 1 / 12)),
-        fullyY = (side) => y + size * Math.sin(2 * Math.PI * (side / 6 + 1 / 12));
+      const fullyX = side => x + size * Math.cos(2 * Math.PI * (side / 6 + 1 / 12)),
+        fullyY = side => y + size * Math.sin(2 * Math.PI * (side / 6 + 1 / 12));
 
       let side = 0;
 
@@ -164,14 +166,16 @@ function animateItemsLoader() {
       if (y < 0 - size) {
         polygons.splice(ind, 1);
 
-        const size = random(30, 60);
+        const size = w < 700 ? random(30, 40) : random(30, 60);
 
-        buildPolygon({size, y: canvas.height + size});
+        if (polygons.length < totalPolygons) buildPolygon({size, y: canvas.height + size});
       };
+
+      if (polygons.length < totalPolygons) buildPolygon({size, y: canvas.height + size});
     });
   };
 
-  function generatePolygons(count = 12) {
+  function generatePolygons(count = totalPolygons) {
     polygons.splice(0, polygons.length);
 
     for (let c = 0; c < between(5, count, 50); c++) buildPolygon();
@@ -180,20 +184,18 @@ function animateItemsLoader() {
   const polygonSpeed = 5e1;
 
   function buildPolygon(props = {}) {
-    const h = canvas.height, w = canvas.width;
+    const h = canvas.height, w = canvas.width, rSize = random(30, 60);
 
-    props.size ??= random(30, 60);
+    props.size ??= w < 700 ? random(30, 40) : random(30, 60);
     props.x ??= randomInt(props.size, w - props.size);
     props.y ??= randomInt(props.size, h - props.size);
-    props.speedY = props.size ** -1 * (polygonSpeed * -1);
+    props.speedY = rSize ** -1 * (polygonSpeed * -1);
 
     const {size, x, y, speedY} = props;
 
     polygons.push({size, x, y, speedY});
   };
-  } catch (error) {
-
-  };
+  } catch (error) {};
 };
 
 export default HomeContent;
