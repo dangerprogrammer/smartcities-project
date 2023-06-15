@@ -22,7 +22,7 @@
     overflow: hidden;
     flex-direction: column;
     transition: .2s ease-in-out background;
-    max-width: 35rem;
+    max-width: min(35rem, 90vw);
     gap: .6rem;
 
     &:hover {
@@ -42,7 +42,7 @@
 
     p {
         margin-top: .75em;
-        font-size: .85em;
+        font-size: max(.85em, .85rem);
         opacity: .8;
     }
 }
