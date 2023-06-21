@@ -13,17 +13,7 @@ function GameProject() {
         </PageContent>
         <PageContent className={styles.gameChapter}>
             <h1>Aqui estão algumas imagens do jogo que está sendo desenvolvido</h1>
-            <img alt="Game Image" className={styles.gameImage} src="/imgs/game-1.jpg"/>
-            {/* <CarouselImages listImages={images}/> */}
-        </PageContent>
-        <PageContent className={styles.gameChapter}>
-            <img alt="Game Image" className={styles.gameImage} src="/imgs/game-2.jpg"/>
-        </PageContent>
-        <PageContent className={styles.gameChapter}>
-            <img alt="Game Image" className={styles.gameImage} src="/imgs/game-3.jpg"/>
-        </PageContent>
-        <PageContent className={styles.gameChapter}>
-            <img alt="Game Image" className={styles.gameImage} src="/imgs/game-4.jpg"/>
+            <CarouselImages listImages={images}/>
         </PageContent>
         <Link className={styles.playButton} href="/">Jogar Agora!</Link>
     </PageContainer>
