@@ -27,7 +27,8 @@ function HomeContent() {
       }, src: "https://www.linkedin.com/in/matheus-lsouza", name: "LinkedIn"}
     ]}
   ], switchedText = ['inteligentes', 'humanas', 'sustentáveis'], projectsList = [
-    {title: "Bright Light", desc: "A proposta do projeto é a construção de uma lâmpada inteligente, buscando diminuir a redução de gastos com energia elétrica e uma sociedade mais ergonômica. A lâmpada busca adequar sua luminosidade a partir do índice de luz proveniente do ambiente a qual está inserida.", logoClass: "logo-website", link: "/bright-light"}
+    {title: "Bright Light", desc: "A proposta do projeto é a construção de uma lâmpada inteligente, buscando diminuir a redução de gastos com energia elétrica e uma sociedade mais ergonômica. A lâmpada busca adequar sua luminosidade a partir do índice de luz proveniente do ambiente a qual está inserida.", logoClass: "logo-website", link: "/bright-light"},
+    {title: "Game Project", desc: "A idéia da criação de um jogo para melhor interatividade com o projeto Bright Light.", logoClass: "logo-game", link: "/game-project"},
   ];
 
   useEffect(animateItemsLoader);
