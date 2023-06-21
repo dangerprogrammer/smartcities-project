@@ -29,7 +29,6 @@
 
     &:has(.itemCarousel:hover) .itemCarousel:not(:hover) {
         opacity: .5;
-        // scale: .85;
     }
 }
 
@@ -38,7 +37,7 @@
     width: 30vw;
     min-width: 8rem;
     max-width: 30rem;
-    border-radius: 2rem;
+    border-radius: 1em;
     overflow: hidden;
     flex-shrink: 0;
     opacity: .8;
