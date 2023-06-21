@@ -20,7 +20,12 @@ function HomeContent() {
     ]},
     {src: "/imgs/renato.jpg", name: "Renato Rinaldi"},
     {src: "/imgs/luis.jpg", name: "Luis Henrique"},
-    {src: "/imgs/viktor.jpg", name: "Viktor Nachiluk Roza"}
+    {src: "/imgs/viktor.jpg", name: "Viktor Nachiluk"},
+    {src: "/imgs/matheus.jpg", name: "Matheus de Luzia", aditionalLinks: [
+      {Img() {
+        return <ion-icon name="logo-linkedin"></ion-icon>
+      }, src: "https://www.linkedin.com/in/matheus-lsouza", name: "LinkedIn"}
+    ]}
   ], switchedText = ['inteligentes', 'humanas', 'sustentáveis'], projectsList = [
     {title: "Bright Light", desc: "A proposta do projeto é a construção de uma lâmpada inteligente, buscando diminuir a redução de gastos com energia elétrica e uma sociedade mais ergonômica. A lâmpada busca adequar sua luminosidade a partir do índice de luz proveniente do ambiente a qual está inserida.", logoClass: "logo-website", link: "/bright-light"}
   ];
